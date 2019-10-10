@@ -4,9 +4,13 @@ call plug#begin('~/.config/nvim/plugins')
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
-Plug 'ervandew/supertab'
+Plug 'airblade/vim-gitgutter'
+Plug 'embear/vim-localvimrc'
+Plug 'antoyo/vim-licenses'
+Plug 'rhysd/vim-clang-format'
 
 call plug#end()
 
@@ -30,6 +34,9 @@ nmap <leader>l :NERDTreeFind<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>ff :Files<CR>
 nmap <leader>ag :Ag<CR>
+nmap <leader>w :bp <BAR> bd #<CR>
+nmap <A-Left> :bp<CR>
+nmap <A-Right> :bn<CR>
 
 " nerdtree config, automatically open nt on directory
 " prevent opening buffers on nt pane
@@ -49,3 +56,12 @@ autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" local vimrc config
+let g:localvimrc_whitelist = '/Users/nicola/Repos/.*'
+let g:localvimrc_sandbox = 0
+
+" licenser
+let g:licenses_copyright_holders_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
+let g:licenses_author_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
+

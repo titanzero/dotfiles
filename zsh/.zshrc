@@ -17,6 +17,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 function dotfiles { cd ~/.dotfiles }
+function repos { cd ~/Repos }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
