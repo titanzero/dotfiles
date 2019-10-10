@@ -5,6 +5,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'morhetz/gruvbox'
 Plug 'airblade/vim-gitgutter'
@@ -19,6 +20,7 @@ syntax on
 colorscheme gruvbox
 set t_Co=256
 set background=dark
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set number
 set hid
 set sidescroll=1
@@ -27,16 +29,24 @@ set nobackup
 set noswapfile
 set mouse=a
 
-" remaps
+" NERDTree
 let mapleader = ","
 nmap <leader>t :NERDTreeToggle<CR>
 nmap <leader>l :NERDTreeFind<CR>
+
+" Buffers
 nmap <leader>b :Buffers<CR>
 nmap <leader>ff :Files<CR>
 nmap <leader>ag :Ag<CR>
+
+" Tabs
 nmap <leader>w :bp <BAR> bd #<CR>
 nmap <A-Left> :bp<CR>
 nmap <A-Right> :bn<CR>
+
+" Fugitive
+nmap <leader>ga :Gwrite<CR>
+nmap <leader>gc :Gcommit<CR>
 
 " nerdtree config, automatically open nt on directory
 " prevent opening buffers on nt pane
@@ -45,6 +55,19 @@ autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " line numbers
 :augroup numbertoggle
