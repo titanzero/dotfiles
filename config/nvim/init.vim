@@ -29,7 +29,7 @@ nmap <leader>t :NERDTreeToggle<CR>
 nmap <leader>l :NERDTreeFind<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>ff :Files<CR>
-nmap <leader>q :tabclose<CR>
+nmap <leader>ag :Ag<CR>
 
 " nerdtree config, automatically open nt on directory
 " prevent opening buffers on nt pane
