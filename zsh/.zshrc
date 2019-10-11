@@ -2,7 +2,12 @@ export ZSH="/Users/nicola/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 source $ZSH/antigen.zsh
 
-# Angigen package manager
+### Export PATHs
+#
+export PATH="/usr/local/cross/bin:$PATH"
+
+### Angigen
+#
 antigen use oh-my-zsh
 
 antigen bundle git
@@ -11,11 +16,14 @@ antigen theme romkatv/powerlevel10k
 
 antigen apply
 
-# Customs
+### Customs
+#
 alias mkdir='mkdir -p'
 alias vi='nvim'
 alias vim='nvim'
 
+### Functions
+#
 function dotfiles { cd ~/.dotfiles }
 function repos { cd ~/Repos }
 

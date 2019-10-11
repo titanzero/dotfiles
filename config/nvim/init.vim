@@ -12,6 +12,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'embear/vim-localvimrc'
 Plug 'antoyo/vim-licenses'
 Plug 'rhysd/vim-clang-format'
+Plug 'ryanoasis/vim-devicons'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -45,8 +47,9 @@ nmap <A-Left> :bp<CR>
 nmap <A-Right> :bn<CR>
 
 " Fugitive
-nmap <leader>ga :Gwrite<CR>
-nmap <leader>gc :Gcommit<CR>
+nmap <leader>a :Gwrite<CR>
+nmap <leader>c :Gcommit<CR>
+nmap <leader>gp :Git push<CR>
 
 " nerdtree config, automatically open nt on directory
 " prevent opening buffers on nt pane
@@ -55,19 +58,6 @@ autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
 
 " line numbers
 :augroup numbertoggle
@@ -88,3 +78,16 @@ let g:localvimrc_sandbox = 0
 let g:licenses_copyright_holders_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
 let g:licenses_author_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
 
+" Fugitive icons
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
