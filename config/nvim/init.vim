@@ -11,8 +11,12 @@ Plug 'morhetz/gruvbox'
 Plug 'airblade/vim-gitgutter'
 Plug 'embear/vim-localvimrc'
 Plug 'antoyo/vim-licenses'
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
+Plug 'drmikehenry/vim-headerguard'
 Plug 'ryanoasis/vim-devicons'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'vim-scripts/asmx86_64'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
@@ -50,6 +54,9 @@ nmap <A-Right> :bn<CR>
 nmap <leader>a :Gwrite<CR>
 nmap <leader>c :Gcommit<CR>
 nmap <leader>gp :Git push<CR>
+
+" COC VIM
+inoremap <silent><expr> <c-space> coc#refresh()
 
 " nerdtree config, automatically open nt on directory
 " prevent opening buffers on nt pane
