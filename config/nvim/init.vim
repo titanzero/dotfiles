@@ -29,11 +29,14 @@ set background=dark
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set number
 set hid
+set showmatch
 set sidescroll=1
 set encoding=utf-8
 set nobackup
 set noswapfile
 set mouse=a
+set updatetime=100
+set autoread
 
 " NERDTree
 let mapleader = ","
@@ -61,6 +64,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " nerdtree config, automatically open nt on directory
 " prevent opening buffers on nt pane
 let NERDTreeMinimalUI = 1
+let NERDTreeIgnore=['\.DS_Store']
 autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
