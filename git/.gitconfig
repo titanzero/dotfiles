@@ -2,3 +2,5 @@
 [user]
 	name = Nicola Leonardi
 	email = nic95.leo@gmail.com
+[commit]
+	gpgsign = true
