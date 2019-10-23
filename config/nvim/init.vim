@@ -17,6 +17,7 @@ Plug 'drmikehenry/vim-headerguard'
 Plug 'ryanoasis/vim-devicons'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'vim-scripts/asmx86_64'
+Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
@@ -47,6 +48,7 @@ nmap <leader>l :NERDTreeFind<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>ff :Files<CR>
 nmap <leader>ag :Ag<CR>
+nmap <leader>cc :cclose<CR>
 
 " Tabs
 nmap <leader>w :bp <BAR> bd #<CR>
