@@ -15,6 +15,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
@@ -62,7 +63,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "   Auto open on empty params
 "
 let NERDTreeMinimalUI = 1
-let NERDTreeIgnore= [ '\.DS_Store' ]
+let NERDTreeIgnore= [ '\.DS_Store', 'node_modules', '.git/' ]
 autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif

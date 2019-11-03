@@ -2,6 +2,11 @@ export ZSH="/Users/nicola/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 source $ZSH/antigen.zsh
 
+### Exports
+#
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 ### Export PATHs
 #
 export PATH="/usr/local/cross/bin:$PATH"
