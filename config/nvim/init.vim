@@ -5,7 +5,6 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " ASM/C Dev
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'rhysd/vim-clang-format'
 Plug 'drmikehenry/vim-headerguard'
 Plug 'vim-scripts/asmx86_64'
@@ -19,6 +18,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'liuchengxu/vista.vim'
 
 " Others
 Plug 'embear/vim-localvimrc'
@@ -27,24 +27,26 @@ Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
-" VIM Remaps
+" VIM
 "
 let mapleader = ","
 nmap <leader>cc :cclose<CR>
 nmap <leader>w :bp <BAR> bd #<CR>
 nmap <leader>n :Startify<CR>
 
+au BufRead,BufNewFile *.md setlocal textwidth=80
+
 " Basic Configs
 "
-syntax on
+set termguicolors     
 colorscheme gruvbox
-set termguicolors
-set t_Co=256
 set background=dark
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set number relativenumber
 set hid
 set showmatch
+set autoindent
+set copyindent
 set sidescroll=1
 set encoding=utf-8
 set nobackup
@@ -55,6 +57,8 @@ set signcolumn=yes
 set mouse=a
 set updatetime=100
 set autoread
+set splitright
+set splitbelow
 
 " COC Configs
 " 
@@ -64,12 +68,17 @@ let g:coc_global_extensions =
     \   'coc-vetur', 'coc-yaml', 'coc-omnisharp', 'coc-git', 
     \   'coc-lists', 'coc-tslint-plugin' 
     \ ]
-au CursorHold * sil call CocActionAsync('highlight')
-au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
-nmap <leader>b :CocList buffers<CR>
-nmap <leader>f :CocList files<CR>
-nmap <leader>g :CocList grep<CR>
+autocmd CursorHoldI,CursorMovedI * silent! call CocActionAsync('showSignatureHelp')
+nmap <leader>lb :CocList buffers<CR>
+nmap <leader>lf :CocList files<CR>
+nmap <leader>lg :CocList grep<CR>
 nmap <F2> <Plug>(coc-rename)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " NERDTree config:
@@ -77,8 +86,16 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "   Auto open on empty params
 "
 let NERDTreeMinimalUI = 1
-let NERDTreeIgnore= [ '\.DS_Store', 'node_modules', '.git/' ]
-au VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
+let NERDTreeIgnore = 
+    \ [ 
+    \   '\.DS_Store', 'node_modules', '.git/',
+    \   'CMakeFiles', 'CMakeCache.*', 'cmake_install.*'
+    \ ]
+au VimEnter * if !argc() | Startify | NERDTree | Vista | wincmd w | endif
+
+" Devicons
+"
+let g:DevIconsEnableFoldersOpenClose = 1
 
 " Tabline
 "
