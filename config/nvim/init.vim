@@ -1,18 +1,21 @@
 " VimPlug Loading {{{
 call plug#begin('~/.config/nvim/plugins')
 
-" UI/Themes Plugins
-Plug 'itchyny/lightline.vim'
-Plug 'morhetz/gruvbox'
-
 " UI Tweaks
+" Needs to be called before themes
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 
+" UI/Themes Plugins
+Plug 'vim-airline/vim-airline'
+Plug 'morhetz/gruvbox'
+Plug 'ryanoasis/vim-devicons'
+
 " Autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 call plug#end()
 " }}}
@@ -21,6 +24,7 @@ call plug#end()
 set mouse=a
 set number relativenumber
 set noshowmode
+set noshowcmd
 set autoindent
 set signcolumn=yes
 set encoding=utf-8
@@ -36,19 +40,25 @@ let mapleader = ","
 nmap <leader>cc :cclose<CR>
 nmap <leader>sf :source %<CR>
 nmap <leader>w :bp <BAR> bd #<CR>
+nmap <M-Left> :bp<CR>
+nmap <M-Right> :bn<CR>
 nmap <leader>t :NERDTreeToggle<CR>
 
-au VimEnter * if !argc() | Startify | wincmd w | endif
+au VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
 " }}}
 
 " UI/Themes/Fixes {{{
 set termguicolors
 set background=dark
 let g:gruvbox_italic = 1
-let g:lightline = { 'colorscheme': 'gruvbox' }
+let g:airline#extensions#tabline#enabled = 1
+let g:webdevicons_enable_startify = 1
 
-nmap <leader>fe :Goyo 120<CR>
+nmap <leader>fe :Goyo 80x80%<CR>
 nmap <leader>fc :Goyo!<CR>
+
+au! User GoyoEnter Limelight 0.8
+au! User GoyoLeave Limelight!
 
 colorscheme gruvbox
 " }}}
@@ -64,4 +74,11 @@ let NERDTreeNaturalSort = 1
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, {'z': '~/.zshrc'} ]
+" }}}
+
+" COC {{{
+let g:coc_global_extensions = 
+    \ [ 
+    \   'coc-json', 'coc-git', 'coc-lists'
+    \ ]
 " }}}

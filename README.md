@@ -1,15 +1,3 @@
-#### Reminder to myself
+#### Welcome to the wasted lands of dotfiles 🔥
 
-To restore nvim config 
 
-```
-mkdir ~/.config
-stow config -t ~/.config
-```
-
-To restore everything else
-```
-stow zsh
-stow git
-...
-```
