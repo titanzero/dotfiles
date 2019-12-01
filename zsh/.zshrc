@@ -1,4 +1,4 @@
-export ZSH="/Users/nicola/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 source $ZSH/antigen.zsh
 
@@ -30,8 +30,7 @@ alias vim='nvim'
 ### Functions
 #
 function dotfiles { cd ~/.dotfiles }
-function repos { cd ~/Repos }
-function rr { cd ~/Repos/$@ }
+function rr { cd ~/[rR]epos/$@ }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 ### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

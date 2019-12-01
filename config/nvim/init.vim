@@ -81,4 +81,9 @@ let g:coc_global_extensions =
     \ [ 
     \   'coc-json', 'coc-git', 'coc-lists'
     \ ]
+
+nmap <leader>lb :CocList buffers<CR>
+nmap <leader>lf :CocList files<CR>
+nmap <leader>lg :CocList grep<CR>
+nmap <F2> <Plug>(coc-rename)
 " }}}
