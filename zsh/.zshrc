@@ -1,3 +1,4 @@
+export LANG=en_US.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 source $ZSH/antigen.zsh
@@ -11,7 +12,6 @@ export EDITOR="$VISUAL"
 #
 export PATH="/usr/local/cross/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
-export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 ### Angigen
