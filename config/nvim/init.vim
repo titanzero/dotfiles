@@ -87,7 +87,8 @@ let NERDTreeNaturalSort = 1
 let NERDTreeIgnore = 
     \ [ 
     \   '\.DS_Store', 'node_modules', '.git', '.ccls-cache',
-    \   'CMakeFiles', 'CMakeCache.*', 'cmake_install.*'
+    \   'CMakeFiles', 'CMakeCache.*', 'cmake_install.*',
+    \   'bin', 'obj'
     \ ]
 
 nmap <leader>t :NERDTreeToggle<CR>
@@ -111,6 +112,14 @@ nmap <leader>lg :CocList grep<CR>
 nmap <F2> <Plug>(coc-rename)
 inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 " }}}
 
 " Others {{{

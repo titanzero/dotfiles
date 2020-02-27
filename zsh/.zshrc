@@ -11,6 +11,7 @@ export EDITOR="$VISUAL"
 ### Export PATHs
 #
 export PATH="/usr/local/cross/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
