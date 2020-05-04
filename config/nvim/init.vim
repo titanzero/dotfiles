@@ -22,11 +22,13 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'rhysd/vim-clang-format'
 Plug 'vim-scripts/asmx86_64'
 Plug 'sheerun/vim-polyglot'
+Plug 'drmikehenry/vim-headerguard'
 
 " Others
 Plug 'embear/vim-localvimrc'
 Plug 'antoyo/vim-licenses'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 " }}}
@@ -47,6 +49,7 @@ set updatetime=100
 set autoread
 set splitright
 set splitbelow
+set clipboard=unnamedplus
 let mapleader = ","
 
 nmap <leader>cc :cclose<CR>
@@ -55,6 +58,10 @@ nmap <leader>w :bp <BAR> bd #<CR>
 nmap <M-Left> :bp<CR>
 nmap <M-Right> :bn<CR>
 nmap <leader>n :Startify<CR>
+
+nmap <leader>vp :vsplit<CR>
+nmap <leader>hp :split<CR>
+tnoremap <Esc> <C-\><C-n>:q<CR>
 
 au VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
 au BufNewFile,BufRead *.S set syntax=asmx86_64
@@ -86,8 +93,8 @@ let NERDTreeWinSize = 35
 let NERDTreeNaturalSort = 1
 let NERDTreeIgnore = 
     \ [ 
-    \   '\.DS_Store', 'node_modules', '.git', '.ccls-cache',
-    \   'CMakeFiles', 'CMakeCache.*', 'cmake_install.*',
+    \   '\.DS_Store', 'node_modules', '^.git$', '^.ccls-cache$',
+    \   'CMakeFiles', 'CMakeCache.*', 'cmake_install.*', 'vendor',
     \   'bin', 'obj'
     \ ]
 
@@ -103,7 +110,8 @@ let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, {'z': '~/.zshrc'}
 " COC {{{
 let g:coc_global_extensions = 
     \ [ 
-    \   'coc-json', 'coc-git', 'coc-lists', 'coc-omnisharp'
+    \   'coc-json', 'coc-git', 'coc-lists', 'coc-omnisharp', 'coc-phpls', 'coc-tsserver',
+    \   'coc-html', 'coc-css'
     \ ]
 
 nmap <leader>lb :CocList buffers<CR>
@@ -120,6 +128,8 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+au CursorHold * silent call CocActionAsync('highlight')
 " }}}
 
 " Others {{{

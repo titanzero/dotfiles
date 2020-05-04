@@ -11,9 +11,10 @@ export EDITOR="$VISUAL"
 ### Export PATHs
 #
 export PATH="/usr/local/cross/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+#export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 ### Angigen
 #
@@ -36,6 +37,12 @@ alias vim='nvim'
 function dotfiles { cd ~/.dotfiles }
 function rr { cd ~/[rR]epos/$@ }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
+function lopt() {
+    php artisan clear-compiled
+    php artisan ide-helper:generate
+    php artisan ide-helper:meta
+    php artisan ide-helper:models --write
+}
 
 ### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #
