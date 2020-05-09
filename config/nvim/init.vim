@@ -9,6 +9,7 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'mhinz/vim-startify'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'yuttie/comfortable-motion.vim'
 
 " UI/Themes Plugins
 Plug 'vim-airline/vim-airline'
@@ -55,6 +56,10 @@ let mapleader = ","
 nmap <leader>cc :cclose<CR>
 nmap <leader>sf :source %<CR>
 nmap <leader>w :bp <BAR> bd #<CR>
+nmap <C-H> <C-W><C-H>
+nmap <C-L> <C-W><C-L>
+nmap <C-K> <C-W><C-K>
+nmap <C-J> <C-W><C-J>
 nmap <M-Left> :bp<CR>
 nmap <M-Right> :bn<CR>
 nmap <leader>n :Startify<CR>
@@ -89,7 +94,7 @@ colorscheme gruvbox
 " NERDTree {{{
 let NERDTreeMinimalMenu = 1
 let NERDTreeMinimalUI = 1
-let NERDTreeWinSize = 35
+let NERDTreeWinSize = 55
 let NERDTreeNaturalSort = 1
 let NERDTreeIgnore = 
     \ [ 
@@ -117,6 +122,8 @@ let g:coc_global_extensions =
 nmap <leader>lb :CocList buffers<CR>
 nmap <leader>lf :CocList files<CR>
 nmap <leader>lg :CocList grep<CR>
+nmap <leader>ca  <Plug>(coc-codeaction)
+nmap <leader>cf  <Plug>(coc-fix-current)
 nmap <F2> <Plug>(coc-rename)
 inoremap <silent><expr> <c-space> coc#refresh()
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -135,6 +142,18 @@ au CursorHold * silent call CocActionAsync('highlight')
 " Others {{{
 let g:licenses_copyright_holders_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
 let g:licenses_author_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
-let g:localvimrc_whitelist = '/Users/nicola/Repos/.*'
+let g:localvimrc_whitelist = '~/Repos/.*'
 let g:localvimrc_sandbox = 0
+" }}}
+
+
+" EXPERIMENTALS {{{
+" Got some problems during scroll in long files, those config
+" seems to partially solve the issue under iTerm. Temporary 
+" switched to alacritty
+"
+" PS. Nothing is more permanent than temporary things/fixes.
+set regexpengine=1
+set noshowcmd
+set synmaxcol=200
 " }}}
