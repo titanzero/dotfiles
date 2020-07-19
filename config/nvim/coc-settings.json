@@ -19,14 +19,6 @@
            "directory": ".ccls-cache"
          }
        }
-    },
-    "intelephense": {
-      "command": "intelephense",
-      "args": ["--stdio"],
-      "filetypes": ["php"],
-      "initializationOptions": {
-         "storagePath": "/tmp/intelephense"
-      }
     }
   }
 }

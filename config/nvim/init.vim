@@ -18,6 +18,7 @@ Plug 'ryanoasis/vim-devicons'
 
 " Autocompletion
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'raimondi/delimitmate'
 
 " Lang specific
 Plug 'rhysd/vim-clang-format'
@@ -66,6 +67,7 @@ nmap <leader>n :Startify<CR>
 
 nmap <leader>vp :vsplit<CR>
 nmap <leader>hp :split<CR>
+nmap <leader>vt :vsplit<CR>:terminal<CR>i
 tnoremap <Esc> <C-\><C-n>:q<CR>
 
 au VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
@@ -116,7 +118,7 @@ let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, {'z': '~/.zshrc'}
 let g:coc_global_extensions = 
     \ [ 
     \   'coc-json', 'coc-git', 'coc-lists', 'coc-omnisharp', 'coc-phpls', 'coc-tsserver',
-    \   'coc-html', 'coc-css'
+    \   'coc-html', 'coc-css', 'coc-python'
     \ ]
 
 nmap <leader>lb :CocList buffers<CR>
@@ -137,12 +139,13 @@ function! s:show_documentation()
 endfunction
 
 au CursorHold * silent call CocActionAsync('highlight')
+au! CompleteDone * if pumvisible() == 0 | pclose | endif
 " }}}
 
 " Others {{{
 let g:licenses_copyright_holders_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
 let g:licenses_author_name = 'Nicola Leonardi <nic95.leo@gmail.com>'
-let g:localvimrc_whitelist = '~/Repos/.*'
+let g:localvimrc_whitelist = '/Users/nicola/Repos/.*'
 let g:localvimrc_sandbox = 0
 " }}}
 

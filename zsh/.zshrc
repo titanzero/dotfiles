@@ -42,6 +42,12 @@ function lopt() {
     #php artisan ide-helper:meta
     php artisan ide-helper:models --write
 }
+function lsd() {
+    composer dump-autoload
+    php artisan db:wipe
+    php artisan migrate
+    php artisan db:seed
+}
 
 ### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #

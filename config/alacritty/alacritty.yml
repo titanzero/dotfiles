@@ -11,6 +11,8 @@ env:
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
 
 window:
   # Window dimensions (changes require restart)
@@ -240,23 +242,23 @@ colors:
   #save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-#dynamic_title: true
+dynamic_title: true
 
-#cursor:
+cursor:
   # Cursor style
   #
   # Values for `style`:
   #   - ▇ Block
   #   - _ Underline
   #   - | Beam
-  #style: Block
+  style: Underline
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
   #unfocused_hollow: true
 
 # Live config reload (changes require restart)
-#live_config_reload: true
+live_config_reload: true
 
 # Shell
 #
@@ -268,9 +270,11 @@ colors:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 #shell:
-#  program: /bin/bash
+#  program: /bin/zsh
 #  args:
-#    - --login
+#    - -l
+#    - -c
+#    - "tmux"
 
 # Startup directory
 #
@@ -291,7 +295,7 @@ colors:
 # Send ESC (\x1b) before characters when alt is pressed.
 alt_send_esc: false
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
@@ -301,7 +305,7 @@ alt_send_esc: false
   #triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+  hide_when_typing: true
 
   #url:
     # URL launcher
