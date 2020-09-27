@@ -8,6 +8,7 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
 
   "list.source.grep.command": "ag",
+  "suggest.noselect": false,
 
   "languageserver": {
     "ccls": {

@@ -10,10 +10,9 @@ export EDITOR="$VISUAL"
 
 ### Export PATHs
 #
-#export PATH="/usr/local/cross/bin:$PATH"
-#export PATH="$HOME/.dotnet/tools:$PATH"
-#export PATH="$HOME/.composer/vendor/bin:$PATH"
-#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.cross/bin:$PATH"
+export PATH="$HOME/.grub/bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 ### Angigen
 #
@@ -41,3 +40,4 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 #
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

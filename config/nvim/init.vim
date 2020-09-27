@@ -117,8 +117,8 @@ let g:startify_bookmarks = [ {'v': '~/.config/nvim/init.vim'}, {'z': '~/.zshrc'}
 " COC {{{
 let g:coc_global_extensions = 
     \ [ 
-    \   'coc-json', 'coc-git', 'coc-lists', 'coc-omnisharp', 'coc-phpls', 'coc-tsserver',
-    \   'coc-html', 'coc-css', 'coc-python'
+    \   'coc-json', 'coc-git', 'coc-lists', 'coc-phpls', 
+    \   'coc-tsserver', 'coc-html', 'coc-css'
     \ ]
 
 nmap <leader>lb :CocList buffers<CR>
