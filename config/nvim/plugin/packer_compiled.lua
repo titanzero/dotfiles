@@ -69,21 +69,33 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["Catppuccino.nvim"] = {
-    loaded = true,
-    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/Catppuccino.nvim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/bufferline.nvim"
+  },
+  ["editorconfig-vim"] = {
+    loaded = true,
+    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/editorconfig-vim"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
+  ["gruvbox-flat.nvim"] = {
+    loaded = true,
+    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/gruvbox-flat.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
-  ["lua-language-server"] = {
+  ["markdown-preview.nvim"] = {
     loaded = true,
-    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/lua-language-server"
+    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim"
   },
   ["nvim-compe"] = {
     loaded = true,
@@ -93,9 +105,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/Users/nicola/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,

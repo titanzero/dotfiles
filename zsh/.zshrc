@@ -11,7 +11,7 @@ export EDITOR="$VISUAL"
 ### Export PATHs
 #
 export PATH="$HOME/.cross/bin:$PATH"
-export PATH="$HOME/.grub/bin:$PATH"
+#export PATH="$HOME/.grub/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 ### Angigen
@@ -41,3 +41,5 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+alias luamake=/Users/nicola/repos/lua-language-server/3rd/luamake/luamake

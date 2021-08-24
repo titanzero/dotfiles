@@ -2,10 +2,6 @@
 --                    ~~ Nicola Leonardi's VIM Configs ~~                    --
 -------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------
---                                  Keymaps                                  --
--------------------------------------------------------------------------------
-
 ------------------------------ NvimTree  Keymaps ------------------------------
 vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', {noremap = false, silent = true})
 vim.api.nvim_set_keymap('n', '<M-Left>', ':BufferLineCyclePrev<CR>', {noremap = false, silent = false})
