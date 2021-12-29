@@ -7,12 +7,14 @@ source $ZSH/antigen.zsh
 #
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export N_PREFIX="$HOME/.n"
 
 ### Export PATHs
 #
-export PATH="$HOME/.cross/bin:$PATH"
-#export PATH="$HOME/.grub/bin:$PATH"
-export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="$N_PREFIX/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/cross/bin:$PATH"
+export PATH="/opt/grub/bin:$PATH"
 
 ### Angigen
 #
@@ -27,8 +29,8 @@ antigen apply
 ### Customs
 #
 alias mkdir='mkdir -p'
-alias vi='nvim'
 alias vim='nvim'
+alias pwgen='pwgen -cyns 50 1 | pbcopy'
 
 ### Functions
 #
@@ -40,6 +42,5 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 #
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-alias luamake=/Users/nicola/repos/lua-language-server/3rd/luamake/luamake
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"

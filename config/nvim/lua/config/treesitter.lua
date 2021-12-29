@@ -1,10 +1,28 @@
--------------------------------------------------------------------------------
---                    ~~ Nicola Leonardi's VIM Configs ~~                    --
--------------------------------------------------------------------------------
+---
+-- TreeSitter main config
+---
 
-require('nvim-treesitter.configs').setup{
-  ensure_installed = {'lua', 'c_sharp'},
+require 'nvim-treesitter.configs'.setup({
+  ensure_installed = { 'lua', 'markdown' },
   highlight = {
     enable = true
+  },
+  refactor = {
+    highlight_definitions = {
+      enable = true
+    },
+    highlight_current_scope = {
+      enable = true
+    },
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = 'rn'
+      }
+    }
   }
-}
+})
+
+require 'treesitter-context'.setup({
+  enable = true
+})

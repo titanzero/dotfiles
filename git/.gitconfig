@@ -1,9 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Nicola Leonardi
-	email = nic95.leo@gmail.com
-[commit]
-	gpgsign = true
+	email = nicolaleonardi@outlook.com
 [alias]
     	la = log --graph --abbrev-commit --decorate --date=rfc --format=format:'%C(bold blue)%h%C(reset) %<(30,trunc)%s %C(reset)%C(bold yellow)%d%C(reset)' --all 
     	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' 
