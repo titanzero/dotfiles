@@ -20,6 +20,7 @@ local packer = require 'packer'.startup({
     use 'nvim-lua/plenary.nvim'
 
     -- UI
+    use 'kyazdani42/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
     use 'catppuccin/nvim'
     use 'onsails/lspkind-nvim'
@@ -30,6 +31,9 @@ local packer = require 'packer'.startup({
     use 'editorconfig/editorconfig-vim'
     use 'windwp/nvim-autopairs'
     use 'norcalli/nvim-colorizer.lua'
+    use 'lewis6991/gitsigns.nvim'
+    use 'numToStr/Comment.nvim'
+    use 'kyazdani42/nvim-tree.lua'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
@@ -54,11 +58,14 @@ local packer = require 'packer'.startup({
 
 require 'config.settings'
 require 'config.ui'
-require 'config.lualine'
 require 'config.lsp'
+require 'config.cmp'
 require 'config.treesitter'
 require 'config.telescope'
-require 'config.cmp'
+require 'config.nvimtree'
+require 'config.gitsigns'
+require 'config.comment'
+require 'config.lualine'
 require 'config.autocmd'
 require 'config.keymaps'
 

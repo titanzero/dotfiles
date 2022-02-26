@@ -7,7 +7,7 @@ local actions = require 'telescope.actions'
 require 'telescope'.setup({
   defaults = {
     file_ignore_patterns = {
-      'node_modules', 'bin', 'obj', 'debug', '.git'
+      'node_modules', 'bin', 'obj', 'debug'
     },
     mappings = {
       i = {

@@ -18,6 +18,11 @@ vim.o.numberwidth = 6
 vim.o.relativenumber = true
 vim.o.signcolumn = 'yes:2'
 vim.o.cursorline = true
+vim.o.showmode = false
+
+-- Better search
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- Editing experience
 vim.o.expandtab = true
