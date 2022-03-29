@@ -3,7 +3,7 @@
 ---
 
 require 'nvim-treesitter.configs'.setup({
-  ensure_installed = { 'lua', 'markdown', 'c', 'cpp', 'make' },
+  ensure_installed = { 'lua', 'markdown', 'c', 'cpp', 'c_sharp', 'make', 'yaml' },
   highlight = {
     enable = true
   },

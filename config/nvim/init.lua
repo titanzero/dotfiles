@@ -34,6 +34,7 @@ local packer = require 'packer'.startup({
     use 'lewis6991/gitsigns.nvim'
     use 'numToStr/Comment.nvim'
     use 'kyazdani42/nvim-tree.lua'
+    use 'antoyo/vim-licenses'
 
     -- LSP
     use 'neovim/nvim-lspconfig'

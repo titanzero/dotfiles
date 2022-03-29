@@ -17,7 +17,7 @@ window:
 font:
   normal:
     family: 'CaskaydiaCove Nerd Font Mono'
-    style: Light
+    style: Light 
 
   bold:
     family: 'CaskaydiaCove Nerd Font Mono'
@@ -44,7 +44,7 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  #use_thin_strokes: true
+  use_thin_strokes: true
 
   # Use built-in font for box drawing characters.
   #

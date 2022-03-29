@@ -38,3 +38,10 @@ vim.o.swapfile = false
 -- Split sanity
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- Vim license
+vim.g.licenses_copyright_holders_name = 'Nicola Leonardi, <nicolaleonardi@outlook.com>'
+vim.g.licenses_authors_name = 'Nicola Leonardi, <nicolaleonardi@outlook.com>'
+vim.g.licenses_default_commands = {
+  'gpl', 'gplv2'
+}
