@@ -49,6 +49,3 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 ### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
-# Scaleway CLI autocomplete initialization.
-eval "$(scw autocomplete script shell=zsh)"
