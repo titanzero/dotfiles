@@ -18,38 +18,38 @@ local fn = vim.fn
 local install_path = fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOT_COMMAND = fn.system({
-		'git',
-		'clone',
-		'https://github.com/wbthomason/packer.nvim',
-		install_path
-	})
-	print 'Installing packer...'
-	execute 'packadd packer.nvim'
-	print 'Done!'
+  PACKER_BOOT_COMMAND = fn.system({
+    'git',
+    'clone',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path
+  })
+  print 'Installing packer...'
+  execute 'packadd packer.nvim'
+  print 'Done!'
 end
 
 local packer = require 'packer'
 
 packer.init {
-	display = {
-		open_fn = function()
-			return require 'packer.util'.float { border = 'rounded' }
-		end,
-	},
+  display = {
+    open_fn = function()
+      return require 'packer.util'.float { border = 'rounded' }
+    end,
+  },
 }
 
 local startup = packer.startup(function(use)
-	use 'wbthomason/packer.nvim'
-	use 'nvim-lua/plenary.nvim'
-	use 'rcarriga/nvim-notify'
+  use 'wbthomason/packer.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'rcarriga/nvim-notify'
 
-	-- Editing experience
-	use 'gpanders/editorconfig.nvim'
+  -- Editing experience
+  use 'gpanders/editorconfig.nvim'
   use { 'kylechui/nvim-surround', config = function() require 'nvim-surround'.setup() end }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'famiu/bufdelete.nvim'
-  use 'windwp/nvim-autopairs'
+  use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup() end }
 
   -- Theme
   use 'kyazdani42/nvim-web-devicons'
@@ -68,6 +68,7 @@ local startup = packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
 
+  -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -76,9 +77,28 @@ local startup = packer.startup(function(use)
     config = function() require 'void.telescope'.setup() end
   }
 
-	if PACKER_BOOT_COMMAND then
-		packer.sync()
-	end
+  -- Cmp
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      { 'hrsh7th/cmp-path' }, { 'hrsh7th/cmp-cmdline' }, { 'hrsh7th/cmp-buffer' }, { 'hrsh7th/cmp-nvim-lsp' },
+      { 'L3MON4D3/LuaSnip' }, { 'saadparwaiz1/cmp_luasnip' }, { 'onsails/lspkind.nvim' }
+    },
+    config = function() require 'void.cmp'.setup() end
+  }
+
+  -- Mason & LSP
+  use {
+    'williamboman/mason.nvim',
+    requires = {
+      { 'williamboman/mason-lspconfig.nvim' }, { 'neovim/nvim-lspconfig' }
+    },
+    config = function() require 'void.lsp'.setup() end
+  }
+
+  if PACKER_BOOT_COMMAND then
+    packer.sync()
+  end
 end)
 
 -- Load configurations

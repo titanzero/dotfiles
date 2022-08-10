@@ -42,12 +42,14 @@ _M.setup = function()
   }
 
   telescope.load_extension 'ui-select'
+  telescope.load_extension 'notify'
 
   map('n', '<leader>ff', cmd 'Telescope find_files')
   map('n', '<leader>fb', cmd 'Telescope buffers')
   map('n', '<leader>fg', cmd 'Telescope live_grep')
   map('n', '<leader>fh', cmd 'Telescope help_tags')
   map('n', '<leader>ft', cmd 'Telescope treesitter')
+  map('n', '<leader>fn', cmd 'Telescope notify')
 
 end
 

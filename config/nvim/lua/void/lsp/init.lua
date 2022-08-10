@@ -10,18 +10,46 @@
 --	     `-'          `-----'   `--'   `-------'      `-'      `--'   `--'   `--'
 --
 --
---	VoidVim Treesitter config
+--	VoidVim LSP Initialization
 --
 
 local _M = {}
 
 _M.setup = function()
-  require 'nvim-treesitter.configs'.setup {
-    highlight = {
-      enable = true,
-    },
-    ensure_installed = { 'lua', 'markdown', 'json', 'yaml', 'c_sharp' }
+  local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local lspconfig = require 'lspconfig'
+  local lsps = {
+    lua = require 'void.lsp.sumneko'
   }
+
+  require 'mason'.setup {
+    ui = {
+      border = 'rounded'
+    }
+  }
+  require 'mason-lspconfig'.setup {
+    ensure_installed = {
+      'sumneko_lua'
+    }
+  }
+
+  local on_attach = function (client, bufnr)
+
+  end
+
+
+  for _, server in pairs(lspconfig.available_servers()) do
+    local config = {
+      capabilities = capabilities,
+      on_attach = on_attach
+    }
+
+    if server == 'sumneko_lua' then
+      config.settings = lsps.lua
+    end
+    vim.notify(server)
+    server:setup(config)
+  end
 end
 
 return _M
