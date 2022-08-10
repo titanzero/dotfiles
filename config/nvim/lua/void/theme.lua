@@ -16,7 +16,7 @@
 local _M = {}
 
 _M.setup = function()
-  vim.g.catppuccin_flavour = 'frappe'
+  vim.g.catppuccin_flavour = 'mocha'
 
   require 'catppuccin'.setup {
     term_colors = true,

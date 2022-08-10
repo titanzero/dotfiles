@@ -1,11 +1,9 @@
 local wezterm = require 'wezterm'
 local catppuccin = require 'colors.catppuccin'.setup {
-	sync = false,
-	flavour = 'frappe'
 }
 
 local is_windows = package.config:sub(1, 1) == '\\'
-local start_command = is_windows and { 'pwsh.exe', '-NoLogo' } or {}
+local start_command = is_windows and { 'pwsh.exe', '-NoLogo' } or { 'zsh' }
 
 return {
 	colors = catppuccin,
