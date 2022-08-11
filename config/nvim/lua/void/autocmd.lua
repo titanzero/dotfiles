@@ -23,3 +23,23 @@ cmd('BufWritePost', {
   pattern = 'init.lua',
   command = 'source <afile>'
 })
+
+-- LSP Client
+local _M = {}
+
+_M.register_highlights = function()
+  local _lsps = grp('_lsps', { clear = false })
+  cmd({ 'CursorHold' }, {
+    pattern = '<buffer>',
+    callback = vim.lsp.buf.document_highlight,
+    group = _lsps
+    })
+
+  cmd({ 'CursorMoved' }, {
+    pattern = '<buffer>',
+    callback = vim.lsp.buf.clear_references,
+    group = _lsps
+  })
+end
+
+return _M

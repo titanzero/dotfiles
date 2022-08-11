@@ -23,8 +23,18 @@ _M.setup = function()
   local lsps = {
     lua = require 'void.lsp.sumneko'
   }
+  local signs = {
+    { name = 'DiagnosticSignError', text = '' },
+    { name = 'DiagnosticSignWarn', text = '' },
+    { name = 'DiagnosticSignHint', text = '' },
+    { name = 'DiagnosticSignInfo', text = '' },
+  }
   local on_attach = function (client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+    if client.server_capabilities.documentFormattingProvider then
+
+    end
   end
 
   require 'mason'.setup {
@@ -54,6 +64,33 @@ _M.setup = function()
 
   map('n', '[d', vim.diagnostic.goto_prev)
   map('n', ']d', vim.diagnostic.goto_next)
+
+  for _, sign in ipairs(signs) do
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
+  end
+
+  vim.diagnostic.config {
+    signs = {
+      active = signs
+    },
+    virtual_text = false,
+    update_in_insert = true,
+    underline = true,
+    float = {
+      focusable = false,
+      style = 'minimal',
+      source = 'always',
+      border = 'rounded'
+    }
+  }
+
+  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = 'rounded'
+  })
+
+  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = 'rounded'
+  })
 end
 
 return _M
