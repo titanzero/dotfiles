@@ -13,35 +13,43 @@
 --	VoidVim Keymaps Config
 --
 
-local opts = { noremap = true, silent = true }
 local map = require 'utils.map'
 local cmd = require 'utils.cmd'
 local KeyMaps = {}
 
 --- Register defaults keymaps
 KeyMaps.init = function()
-  map('', '<Space>', '<Nop>', opts)
+  map('', '<Space>', '<Nop>')
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
 
-  -- NORMAL
-  -- File save
-  map('n', 'ww', ':update<cr>', opts)
+  -- Escape
+  map('i', 'jk', '<esc>')
+  map('t', 'jk', '<C-\\><C-n>')
 
-  map('n', '<leader>t', cmd 'NvimTreeToggle', opts)
+  -- Move selected line / block in visual mode
+  map("x", "J", ":move '>+1<CR>gv-gv")
+  map("x", "K", ":move '<-2<CR>gv-gv")
+
+  -- Search
+  map('n', 'n', 'nzz')
+  map('n', 'N', 'Nzz')
+
+  -- Indent
+  ---@diagnostic disable-next-line: redundant-parameter
+  cmd('v', '<', '<gv')
+  ---@diagnostic disable-next-line: redundant-parameter
+  cmd('v', '>', '>gv')
+
+  -- Buffer switch
+  map('n', '<S-h>', ':bp<cr>')
+  map('n', '<S-l>', ':bn<cr>')
 
   -- Hard Mode
-  map({ 'n', 'i' }, '<Up>', '<Nop>', opts)
-  map({ 'n', 'i' }, '<Down>', '<Nop>', opts)
-  map({ 'n', 'i' }, '<Left>', '<Nop>', opts)
-  map({ 'n', 'i' }, '<Right>', '<Nop>', opts)
-
-  -- Buffer mgm
-  map('n', '<C-q>', cmd 'Bdelete', opts)
-
-  -- INSERT --
-  -- File save
-  map('i', 'ww', '<Esc>:update<cr>gi', opts)
+  map({ 'n', 'i' }, '<Up>', '<Nop>')
+  map({ 'n', 'i' }, '<Down>', '<Nop>')
+  map({ 'n', 'i' }, '<Left>', '<Nop>')
+  map({ 'n', 'i' }, '<Right>', '<Nop>')
 end
 
 --- Register lsps specific keymaps

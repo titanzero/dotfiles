@@ -16,6 +16,9 @@
 local _M = {}
 
 _M.setup = function()
+  local map = require 'utils.map'
+  local cmd = require 'utils.cmd'
+
   require 'nvim-tree'.setup {
     disable_netrw = true,
     hijack_cursor = true,
@@ -24,6 +27,8 @@ _M.setup = function()
       hide_root_folder = true,
     }
   }
+
+  map('n', '<leader>t', cmd 'NvimTreeToggle', opts)
 end
 
 return _M
