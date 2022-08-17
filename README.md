@@ -1,10 +1,13 @@
-## Welcome to the wasted lands of dotfiles 🔥
+<h1 align='center'>Welcome to the wasted land of dotfiles 🔥</h1>
 ---
+
+<img src='img/wezterm.jpg' alt='Wezterm' width='800' style='display: inline-block; margin: 0 auto;' />
+<img src='img/nvim.jpg' alt='NVim' width='800' style='display: inline-block; margin: 0 auto;' />
 
 Shame, shame on you, who decided to format (again) your pc.
 
 #### Basics
-First thing, first, right? So let's start with [homebrew installation](https://brew.sh)
+First thing, first, right? So let's start with [Homebrew installation](https://brew.sh)
 
 Then we should install some dependencies:
 
