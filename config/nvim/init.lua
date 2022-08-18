@@ -33,7 +33,7 @@ local packer = require 'packer'
 
 packer.init {
   display = {
-    open_fn = function ()
+    open_fn = function()
       return require 'packer.util'.float { border = 'rounded' }
     end,
   },
@@ -46,26 +46,26 @@ local startup = packer.startup(function(use)
 
   -- Editing experience
   use 'gpanders/editorconfig.nvim'
-  use { 'kylechui/nvim-surround', config = function () require 'nvim-surround'.setup() end }
+  use { 'kylechui/nvim-surround', config = function() require 'nvim-surround'.setup() end }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'famiu/bufdelete.nvim'
-  use { 'windwp/nvim-autopairs', config = function () require 'nvim-autopairs'.setup() end }
+  use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup() end }
 
   -- Theme
   use 'kyazdani42/nvim-web-devicons'
-  use { 'catppuccin/nvim', as = 'catppuccin', config = function () require 'void.theme'.setup() end }
+  use { 'catppuccin/nvim', as = 'catppuccin', config = function() require 'void.theme'.setup() end }
 
   -- Git
-  use { 'lewis6991/gitsigns.nvim', config = function () require 'void.git'.setup() end }
+  use { 'lewis6991/gitsigns.nvim', config = function() require 'void.git'.setup() end }
 
   -- NvimTree
-  use { 'kyazdani42/nvim-tree.lua', config = function () require 'void.tree'.setup() end }
+  use { 'kyazdani42/nvim-tree.lua', config = function() require 'void.tree'.setup() end }
 
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
-    config = function () require 'void.treesitter'.setup() end,
-    run = function () require('nvim-treesitter.install').update({ with_sync = true }) end
+    config = function() require 'void.treesitter'.setup() end,
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
 
   -- Telescope
@@ -74,7 +74,7 @@ local startup = packer.startup(function(use)
     requires = {
       { 'nvim-telescope/telescope-ui-select.nvim' }
     },
-    config = function () require 'void.telescope'.setup() end
+    config = function() require 'void.telescope'.setup() end
   }
 
   -- Cmp
@@ -85,7 +85,7 @@ local startup = packer.startup(function(use)
       { 'L3MON4D3/LuaSnip' }, { 'saadparwaiz1/cmp_luasnip' }, { 'onsails/lspkind.nvim' },
       { 'hrsh7th/cmp-nvim-lsp-signature-help' }
     },
-    config = function () require 'void.cmp'.setup() end
+    config = function() require 'void.cmp'.setup() end
   }
 
   -- Mason & LSP
@@ -94,13 +94,13 @@ local startup = packer.startup(function(use)
     requires = {
       { 'williamboman/mason-lspconfig.nvim' }, { 'neovim/nvim-lspconfig' }
     },
-    config = function () require 'void.lsp'.setup() end
+    config = function() require 'void.lsp'.setup() end
   }
 
   -- Markdown preview
   use {
     'iamcco/markdown-preview.nvim',
-    run = function () vim.fn['mkdp#util#install']() end
+    run = function() vim.fn['mkdp#util#install']() end
   }
 
   if PACKER_BOOT_COMMAND then

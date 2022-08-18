@@ -20,8 +20,10 @@ _M.setup = function()
   local lspconfig = require 'lspconfig'
   local map = require 'utils.map'
   local cmd = require 'utils.cmd'
+  local autocmd = require 'void.autocmd'
   local lsps = {
-    lua = require 'void.lsp.sumneko'
+    lua = require 'void.lsp.sumneko',
+    csharp = require 'void.lsp.omnisharp'
   }
   local signs = {
     { name = 'DiagnosticSignError', text = '' },
@@ -29,11 +31,27 @@ _M.setup = function()
     { name = 'DiagnosticSignHint', text = '' },
     { name = 'DiagnosticSignInfo', text = '' },
   }
-  local on_attach = function (client, bufnr)
+  local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    if client.server_capabilities.documentFormattingProvider then
+    map('n', '<leader>gd', cmd 'lua vim.lsp.buf.declaration()', {}, bufnr)
+    map('n', '<leader>gD', cmd 'Telescope lsp_definitions', {}, bufnr)
+    map('n', '<leader>gi', cmd 'Telescope lsp_implementations', {}, bufnr)
+    map('n', '<leader>gy', cmd 'Telescope lsp_type_definitions', {}, bufnr)
+    map('n', '<leader>gr', cmd 'Telescope lsp_references', {}, bufnr)
+    map('n', '<leader>gn', cmd 'lua vim.lsp.buf.rename()', {}, bufnr)
+    map('n', '<leader>ga', cmd 'lua vim.lsp.buf.code_action()', {}, bufnr)
+    map('n', '<C-k>', cmd 'lua vim.lsp.buf.signature_help()', {}, bufnr)
+    map('n', 'K', cmd 'lua vim.lsp.buf.hover()', {}, bufnr)
 
+    if client.server_capabilities.documentFormattingProvider then
+      map('n', '<leader>gf', cmd 'lua vim.lsp.buf.formatting()', {}, bufnr)
+    elseif client.server_capabilities.documentRangeFormattingProvider then
+      map('n', '<leader>gf', cmd 'lua vim.lsp.buf.range_formatting()', {}, bufnr)
+    end
+
+    if client.server_capabilities.documentHighlightProvider then
+      autocmd.register_highlights()
     end
   end
 
@@ -44,11 +62,11 @@ _M.setup = function()
   }
   require 'mason-lspconfig'.setup {
     ensure_installed = {
-      'sumneko_lua'
+      'sumneko_lua', 'omnisharp'
     }
   }
   require 'mason-lspconfig'.setup_handlers {
-    function (server)
+    function(server)
       local config = {
         capabilities = capabilities,
         on_attach = on_attach
@@ -56,6 +74,10 @@ _M.setup = function()
 
       if server == 'sumneko_lua' then
         config.settings = lsps.lua
+      end
+
+      if server == 'omnisharp' then
+        config.settings = lsps.csharp
       end
 
       lspconfig[server].setup(config)

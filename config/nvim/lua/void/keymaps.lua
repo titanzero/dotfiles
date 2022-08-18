@@ -52,7 +52,4 @@ KeyMaps.init = function()
   map({ 'n', 'i' }, '<Right>', '<Nop>')
 end
 
---- Register lsps specific keymaps
-KeyMaps.init_lsp = function(bufnr) end
-
 return KeyMaps

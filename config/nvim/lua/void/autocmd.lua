@@ -31,13 +31,17 @@ _M.register_highlights = function()
   local _lsps = grp('_lsps', { clear = false })
   cmd({ 'CursorHold' }, {
     pattern = '<buffer>',
-    callback = vim.lsp.buf.document_highlight,
+    callback = function()
+      vim.lsp.buf.document_highlight()
+    end,
     group = _lsps
-    })
+  })
 
   cmd({ 'CursorMoved' }, {
     pattern = '<buffer>',
-    callback = vim.lsp.buf.clear_references,
+    callback = function()
+      vim.lsp.buf.clear_references()
+    end,
     group = _lsps
   })
 end
