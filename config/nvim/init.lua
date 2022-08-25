@@ -61,6 +61,9 @@ local startup = packer.startup(function(use)
   -- NvimTree
   use { 'kyazdani42/nvim-tree.lua', config = function() require 'void.tree'.setup() end }
 
+  -- Project nvim
+  use { 'ahmedkhalf/project.nvim', config = function() require 'project_nvim'.setup {} end }
+
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',

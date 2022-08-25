@@ -46,6 +46,7 @@ _M.setup = function()
 
   telescope.load_extension 'ui-select'
   telescope.load_extension 'notify'
+  telescope.load_extension 'projects'
 
   map('n', '<leader>ff', cmd 'Telescope find_files')
   map('n', '<leader>fb', cmd 'Telescope buffers')
@@ -53,6 +54,7 @@ _M.setup = function()
   map('n', '<leader>fh', cmd 'Telescope help_tags')
   map('n', '<leader>ft', cmd 'Telescope treesitter')
   map('n', '<leader>fn', cmd 'Telescope notify')
+  map('n', '<leader>fp', cmd 'Telescope projects')
 
 end
 

@@ -18,5 +18,6 @@ return {
 	},
 	initial_rows = 35,
 	initial_cols = 180,
-	use_fancy_tab_bar = false
+	use_fancy_tab_bar = false,
+	window_close_confirmation = 'NeverPrompt'
 }

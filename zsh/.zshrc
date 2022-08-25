@@ -12,10 +12,8 @@ export N_PREFIX="$HOME/.n"
 
 ### Export PATHs
 #
-export PATH="$N_PREFIX/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/cross/bin:$PATH"
-export PATH="/opt/grub/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 ### Angigen
 #
@@ -36,7 +34,7 @@ alias pwgen='pwgen -cyns 50 1 | pbcopy'
 ### Functions
 #
 function dotfiles { cd ~/.dotfiles }
-function rr { cd ~/[rR]epos/$@ }
+function rr { cd ~/[wW]ork/$@ }
 function vdot { dotfiles && nvim }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
