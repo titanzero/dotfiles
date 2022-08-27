@@ -51,6 +51,14 @@ local startup = packer.startup(function(use)
   use 'famiu/bufdelete.nvim'
   use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup() end }
 
+  use {
+    'folke/zen-mode.nvim',
+    requires = {
+      { 'folke/twilight.nvim' }
+    },
+    config = function() require 'void.zen'.setup() end
+  }
+
   -- Theme
   use 'kyazdani42/nvim-web-devicons'
   use { 'catppuccin/nvim', as = 'catppuccin', config = function() require 'void.theme'.setup() end }
