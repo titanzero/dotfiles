@@ -1,15 +1,9 @@
 local wezterm = require 'wezterm'
-local catppuccin = require 'colors.catppuccin'.setup {
-}
-
-local is_windows = package.config:sub(1, 1) == '\\'
-local start_command = is_windows and { 'pwsh.exe', '-NoLogo' } or { 'zsh' }
 
 return {
-	colors = catppuccin,
+  color_scheme = 'Catppuccin Macchiato',
 	font = wezterm.font('CaskaydiaCove Nerd Font Mono', { weight = 'Light' }),
-	font_size = is_windows and 11 or 14,
-	default_prog = start_command,
+  font_size = 15,
 	window_padding = {
 		left = 0,
 		right = 0,

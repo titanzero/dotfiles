@@ -15,14 +15,12 @@ Then we should install some dependencies:
 brew install \
 	stow \
 	neovim \
-	pv \
-	ripgrep \
-	neovim 
+	ripgrep
 
 brew install --cask \
 	dotnet-sdk \
-	gpg-suite-no-mail \
-	iterm2
+	docker \
+	wezterm
 ```
 
 #### Stow back
@@ -38,12 +36,4 @@ stow zsh
 ```
 
 #### NeoVim
-The biggest part is there. Technically with this new VIM Lua config should be easier to install everything
-
-```bash
-git clone https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim #Ensure packer is installed
-
-#Install all vim plugins in headless mode, and then close everything
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-```
+No more cloning of packer. Just start nvim and everything will be installed automagically!
