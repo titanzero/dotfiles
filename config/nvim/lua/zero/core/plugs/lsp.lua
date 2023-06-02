@@ -46,6 +46,7 @@ return {
 
       require("zero.utils").lsp_attach(function(client, buffer)
         require("zero.configs.lsp.keymaps").attach(client, buffer)
+        require("zero.configs.lsp.gitsigns").attach(client, buffer)
       end)
 
       for name, icon in pairs(require("zero.core.icons").diagnostics) do
