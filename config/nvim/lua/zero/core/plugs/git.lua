@@ -1,15 +1,17 @@
+local icons = require("zero.core.icons")
+
 return {
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       signs = {
-        add = { text = "┃" },
-        change = { text = "┋" },
-        delete = { text = "契" },
-        topdelhfe = { text = "契" },
-        changedelete = { text = "┃" },
-        untracked = { text = "┃" },
+        add = { text = icons.gitsigns.add },
+        change = { text = icons.gitsigns.change },
+        delete = { text = icons.gitsigns.delete },
+        topdelhfe = { text = icons.gitsigns.topdelhfe },
+        changedelete = { text = icons.gitsigns.changedelete },
+        untracked = { text = icons.gitsigns.untracked },
       },
       current_line_blame = true,
       current_line_blame_opts = {
@@ -17,7 +19,7 @@ return {
       },
       current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
       preview_config = {
-        border = "rounded"
+        border = "rounded",
       },
     },
     keys = {

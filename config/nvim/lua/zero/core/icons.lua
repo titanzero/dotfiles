@@ -16,6 +16,14 @@ return {
     staged = "",
     conflict = "",
   },
+  gitsigns = {
+    add = "┃",
+    change = "┋",
+    delete = "",
+    topdelhfe = "",
+    changedelete = "┃",
+    untracked = "┃",
+  },
   kinds = {
     Array = " ",
     Boolean = " ",
@@ -58,4 +66,3 @@ return {
     Bug = "",
   },
 }
-

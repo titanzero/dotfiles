@@ -11,16 +11,19 @@ return {
         "regex",
         "bash",
         "json",
+        "toml",
         "lua",
         "markdown",
         "markdown_inline",
+        "c_sharp",
+        "zig",
       },
       highlight = {
-        enable = true
+        enable = true,
       },
       indent = {
         enable = true,
-        disable = { "yaml", "html" }
+        disable = { "yaml", "html" },
       },
       context_commentstring = { enable = true },
       --rainbow = {

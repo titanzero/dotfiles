@@ -59,7 +59,6 @@ local options = {
   sessionoptions = { "buffers", "curdir", "tabpages", "winsize" },
 }
 
-
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
@@ -77,7 +76,7 @@ local disable_providers = {
   "perl",
   "python3",
   "python",
-  "ruby"
+  "ruby",
 }
 
 for _, provider in pairs(disable_providers) do

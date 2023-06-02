@@ -19,14 +19,14 @@ require("lazy").setup({
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
   ui = {
-    border = "rounded"
+    border = "rounded",
   },
   install = {
-    colorscheme = { "catppuccin" }
+    colorscheme = { "catppuccin" },
   },
   checker = {
     enabled = false,
-    notify = false
+    notify = false,
   },
   performance = {
     rtp = {

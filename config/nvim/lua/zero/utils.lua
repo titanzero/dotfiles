@@ -15,7 +15,7 @@ end
 _M.lsp_attach = function(attach)
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
-      attach(vim.lsp.get_client_by_id(args.data.client_id, args.buf))
+      attach(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
     end,
   })
 end
@@ -41,6 +41,7 @@ _M.get_root = function()
         or {}
       for _, p in ipairs(paths) do
         local r = vim.loop.fs_realpath(p)
+        ---@diagnostic disable-next-line: param-type-mismatch
         if path:find(r, 1, true) then
           roots[#roots + 1] = r
         end

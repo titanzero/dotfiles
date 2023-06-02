@@ -19,6 +19,7 @@ export EDITOR="$VISUAL"
 ### Export PATHs
 #
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/Users/nicola/.dotnet/tools:$PATH"
 
 ### Angigen
 #

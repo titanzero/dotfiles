@@ -36,9 +36,36 @@ return {
     },
   },
   {
+    "stevearc/dressing.nvim",
+    lazy = false,
+    opts = {
+      input = {
+        border = "rounded",
+        win_options = { winblend = 0 },
+      },
+      select = { telescope = require("telescope.themes")["get_cursor"]({
+        cwd = utils.get_root(),
+      }) },
+    },
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
+  },
+  {
     "akinsho/bufferline.nvim",
+    after = "catppuccin",
     event = { "BufReadPost" },
     opts = {
+      highlights = require("catppuccin.groups.integrations.bufferline").get(),
       options = {
         diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
         separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
@@ -46,11 +73,10 @@ return {
           style = "icon",
         },
         close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
-        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        diagnostics_indicator = function(_, _, diagnostics_dict, _)
           local s = " "
           for e, n in pairs(diagnostics_dict) do
-            local sym = e == "error" and " "
-              or (e == "warning" and " " or "" )
+            local sym = e == "error" and " " or (e == "warning" and " " or "")
             s = s .. n .. sym
           end
           return s
@@ -74,7 +100,7 @@ return {
     "loctvl842/neo-tree.nvim",
     cmd = "Neotree",
     requires = {
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     keys = {
       {
@@ -83,7 +109,7 @@ return {
           require("neo-tree.command").execute({
             toggle = true,
             position = "left",
-            dir = require("zero.utils").get_root()
+            dir = utils.get_root(),
           })
         end,
         desc = "Explorer (root dir)",
@@ -104,6 +130,7 @@ return {
     init = function()
       vim.g.neo_tree_remove_legacy_commands = 1
       if vim.fn.argc() == 1 then
+        ---@diagnostic disable-next-line: param-type-mismatch
         local stat = vim.loop.fs_stat(vim.fn.argv(0))
         if stat and stat.type == "directory" then
           require("neo-tree")
@@ -198,7 +225,6 @@ return {
       end,
     },
     init = function()
-      local utils = require("zero.utils")
       if not utils.loaded("noice.nvim") then
         utils.very_lazy(function()
           vim.notify = require("notify")
@@ -230,6 +256,25 @@ return {
       buftype_exclude = {
         "terminal",
         "nofile",
+      },
+    },
+  },
+  {
+    "kosayoda/nvim-lightbulb",
+    opts = {
+      sign = {
+        enabled = true,
+        priority = 20,
+      },
+      status_text = {
+        enabled = true,
+        text = "status_text",
+        text_unavailable = "",
+      },
+      autocmd = {
+        enabled = true,
+        pattern = { "*" },
+        events = { "CursorHold", "CursorHoldI", "LspAttach" },
       },
     },
   },
