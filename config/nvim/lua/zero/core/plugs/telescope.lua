@@ -92,6 +92,7 @@ return {
       { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
       -- Find
        { "<leader>f",  "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find files" },
+       { "<leader>B",  "<cmd>lua require('telescope.builtin').buffers()<cr>",    desc = "Find buffers" },
        { "<leader>F",  "<cmd>Telescope live_grep<cr>",                           desc = "Find Text" },
     },
     -- config = function() require("tvl.config.telescope") end,

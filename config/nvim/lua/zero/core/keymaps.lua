@@ -36,3 +36,12 @@ keymap("n", "<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>", opts)
 keymap("n", "<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
 keymap("n", "<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
 keymap("n", "<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", opts)
+
+-- Better splitting
+keymap("n", "<leader>\\", ":vsplit<CR>", opts)
+keymap("n", "<leader>/", ":split<CR>", opts)
+
+-- Fuzzy search local buffer
+vim.keymap.set("n", "<C-f>", function()
+  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes"))
+end, { desc = "[/] Fuzzily search in current buffer]" })

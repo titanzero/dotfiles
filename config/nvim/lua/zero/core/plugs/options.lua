@@ -2,8 +2,9 @@ require("zero.core.options")
 local utils = require("zero.utils")
 
 utils.very_lazy(function()
-  -- Call autocmd registration and keymaps
+  require("zero.core.autocmd")
   require("zero.core.keymaps")
+  require("zero.core.globals")
 end)
 
 return {}
