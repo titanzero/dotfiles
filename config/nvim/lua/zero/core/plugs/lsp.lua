@@ -3,6 +3,11 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     config = true,
+    opts = {
+      ui = {
+        border = "rounded",
+      },
+    },
   },
   {
     "neovim/nvim-lspconfig",
@@ -48,6 +53,7 @@ return {
         require("zero.configs.lsp.keymaps").attach(client, buffer)
         require("zero.configs.lsp.gitsigns").attach(client, buffer)
         require("zero.configs.lsp.navic").attach(client, buffer)
+        require("lsp-inlayhints").on_attach(client, buffer)
       end)
 
       for name, icon in pairs(require("zero.core.icons").diagnostics) do
@@ -129,11 +135,18 @@ return {
     config = function()
       local null_ls = require("null-ls")
       local formatting = null_ls.builtins.formatting
-      -- local diagnostics = null_ls.builtins.diagnostics
+      local diagnostics = null_ls.builtins.diagnostics
+
       null_ls.setup({
         debug = false,
         sources = {
           formatting.stylua,
+          formatting.csharpier,
+          formatting.rustfmt.with({
+            command = "/Users/nicola/.cargo/bin/rustfmt",
+          }),
+          formatting.yamlfix,
+          diagnostics.yamllint,
         },
       })
     end,
@@ -145,8 +158,16 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
+        "csharpier",
+        "rustfmt",
+        "yamllint",
+        "yamlfix",
       },
       automatic_setup = true,
     },
+  },
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    lazy = true,
   },
 }

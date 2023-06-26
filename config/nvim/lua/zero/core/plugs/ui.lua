@@ -309,14 +309,21 @@ return {
     "utilyre/barbecue.nvim",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      "SmiteshP/nvim-navic",
+      {
+        "SmiteshP/nvim-navic",
+        opts = {
+          highlight = true,
+        },
+      },
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      theme = "auto",
+      theme = "catppuccin-mocha",
       include_buftypes = { "" },
       exclude_filetypes = { "gitcommit", "Trouble", "toggleterm" },
       show_modified = false,
+      show_dirname = false,
+      show_basename = false,
       kinds = icons.kinds,
     },
   },

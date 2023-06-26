@@ -17,6 +17,7 @@ return {
         "markdown_inline",
         "c_sharp",
         "zig",
+        "rust",
       },
       highlight = {
         enable = true,

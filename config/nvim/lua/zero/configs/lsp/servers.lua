@@ -3,8 +3,18 @@ return {
     settings = {
       ["rust-analyzer"] = {
         inlayHints = true,
-      }
-    }
+        diagnostics = {
+          enable = false,
+        },
+        cargo = {
+          allFeatures = true,
+        },
+        checkOnSave = {
+          allFeatures = true,
+          command = "clippy",
+        },
+      },
+    },
   },
   zls = {},
   csharp_ls = {},
@@ -16,8 +26,8 @@ return {
         },
         diagnostics = {
           globals = {
-            'vim'
-          }
+            "vim",
+          },
         },
         format = {
           enable = false,
