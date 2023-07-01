@@ -1,23 +1,5 @@
 return {
-  rust_analyzer = {
-    settings = {
-      ["rust-analyzer"] = {
-        inlayHints = true,
-        diagnostics = {
-          enable = false,
-        },
-        cargo = {
-          allFeatures = true,
-        },
-        checkOnSave = {
-          allFeatures = true,
-          command = "clippy",
-        },
-      },
-    },
-  },
-  zls = {},
-  csharp_ls = {},
+  omnisharp = {},
   lua_ls = {
     settings = {
       Lua = {

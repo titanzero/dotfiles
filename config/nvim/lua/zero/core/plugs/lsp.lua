@@ -39,6 +39,7 @@ return {
               local exclude_servers = { "lua_ls" }
               return not vim.tbl_contains(exclude_servers, client.name)
             end,
+            timeout_ms = 2000,
           })
           vim.cmd([[w!]])
         end,
@@ -54,6 +55,21 @@ return {
         require("zero.configs.lsp.gitsigns").attach(client, buffer)
         require("zero.configs.lsp.navic").attach(client, buffer)
         require("lsp-inlayhints").on_attach(client, buffer)
+
+        local function toSnakeCase(str)
+          return string.gsub(str, "%s*[- ]%s*", "_")
+        end
+
+        if client.name == "omnisharp" then
+          local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
+          for i, v in ipairs(tokenModifiers) do
+            tokenModifiers[i] = toSnakeCase(v)
+          end
+          local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
+          for i, v in ipairs(tokenTypes) do
+            tokenTypes[i] = toSnakeCase(v)
+          end
+        end
       end)
 
       for name, icon in pairs(require("zero.core.icons").diagnostics) do
@@ -108,6 +124,8 @@ return {
           handlers = vim.deepcopy(handlers),
         }, servers[server] or {})
 
+        vim.print(server_opts)
+
         require("lspconfig")[server].setup(server_opts)
       end
 
@@ -141,11 +159,8 @@ return {
         debug = false,
         sources = {
           formatting.stylua,
-          formatting.csharpier,
-          formatting.rustfmt.with({
-            command = "/Users/nicola/.cargo/bin/rustfmt",
-          }),
           formatting.yamlfix,
+          formatting.csharpier,
           diagnostics.yamllint,
         },
       })
@@ -158,8 +173,8 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
+        "omnisharp",
         "csharpier",
-        "rustfmt",
         "yamllint",
         "yamlfix",
       },
