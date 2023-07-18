@@ -28,6 +28,8 @@ antigen use oh-my-zsh
 
 antigen bundle git
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle ael-code/zsh-colored-man-pages
 antigen theme romkatv/powerlevel10k
 
 antigen apply

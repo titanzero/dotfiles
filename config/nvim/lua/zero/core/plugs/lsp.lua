@@ -56,19 +56,8 @@ return {
         require("zero.configs.lsp.navic").attach(client, buffer)
         require("lsp-inlayhints").on_attach(client, buffer)
 
-        local function toSnakeCase(str)
-          return string.gsub(str, "%s*[- ]%s*", "_")
-        end
-
-        if client.name == "omnisharp" then
-          local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-          for i, v in ipairs(tokenModifiers) do
-            tokenModifiers[i] = toSnakeCase(v)
-          end
-          local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-          for i, v in ipairs(tokenTypes) do
-            tokenTypes[i] = toSnakeCase(v)
-          end
+        if client.name == "omnisharp" or client.name == "omnisharp_mono" then
+          client.server_capabilities.semanticTokensProvider = nil
         end
       end)
 
@@ -123,8 +112,6 @@ return {
           capabilities = vim.deepcopy(capabilities),
           handlers = vim.deepcopy(handlers),
         }, servers[server] or {})
-
-        vim.print(server_opts)
 
         require("lspconfig")[server].setup(server_opts)
       end

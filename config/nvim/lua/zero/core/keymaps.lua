@@ -19,7 +19,8 @@ keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 keymap("n", "<A-S-l>", ":BufferLineMoveNext<CR>", opts)
 keymap("n", "<A-S-h>", ":BufferLineMovePrev<CR>", opts)
-keymap("n", "<leader>q", ":Bdelete<CR>", opts)
+keymap("n", "<leader>w", ":Bdelete<CR>", opts)
+keymap("n", "<leader>q", ":q!", opts)
 
 -- Quick exit
 keymap("i", "jk", "<ESC>", opts)

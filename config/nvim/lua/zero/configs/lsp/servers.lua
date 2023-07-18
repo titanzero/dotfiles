@@ -1,5 +1,9 @@
 return {
-  omnisharp = {},
+  omnisharp = {
+    enable_import_completion = true,
+    enable_roslyn_analyzers = true,
+    organize_imports_on_format = true,
+  },
   lua_ls = {
     settings = {
       Lua = {
