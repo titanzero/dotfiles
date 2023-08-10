@@ -1,30 +1,5 @@
-local _M = {}
-
-_M.root_patterns = { ".git", "lua", "package.json" }
-
--- Create a very lazy event
-_M.very_lazy = function(fun)
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-      fun()
-    end,
-  })
-end
-
-_M.lsp_attach = function(attach)
-  vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(args)
-      attach(vim.lsp.get_client_by_id(args.data.client_id), args.buf)
-    end,
-  })
-end
-
-_M.loaded = function(plugin)
-  return require("lazy.core.config").plugins[plugin] ~= nil
-end
-
-_M.get_root = function()
+return function()
+  local root_patterns = { ".git", "lua", "package.json", ".editorconfig", ".gitignore" }
   ---@type string?
   local path = vim.api.nvim_buf_get_name(0)
   path = path ~= "" and vim.loop.fs_realpath(path) or nil
@@ -56,11 +31,9 @@ _M.get_root = function()
   if not root then
     path = path and vim.fs.dirname(path) or vim.loop.cwd()
     ---@type string?
-    root = vim.fs.find(_M.root_patterns, { path = path, upward = true })[1]
+    root = vim.fs.find(root_patterns, { path = path, upward = true })[1]
     root = root and vim.fs.dirname(root) or vim.loop.cwd()
   end
   ---@cast root string
   return root
 end
-
-return _M

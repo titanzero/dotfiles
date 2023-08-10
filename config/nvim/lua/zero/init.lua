@@ -1,3 +1,8 @@
+--===========================================================================--
+-- Load Lazy Nvim with some custom config
+--===========================================================================--
+require("zero.config.globals")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,18 +16,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- load lazy
 require("lazy").setup({
-  spec = "zero.core.plugs",
+  spec = "zero.plugs",
   defaults = {
     lazy = false,
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
   ui = {
     border = "rounded",
-  },
-  install = {
-    colorscheme = { "catppuccin" },
+    size = {
+      width = 0.6,
+      height = 0.5,
+    },
   },
   checker = {
     enabled = false,
@@ -31,6 +36,7 @@ require("lazy").setup({
   performance = {
     rtp = {
       disabled_plugins = {
+        "netrwPlugin",
         "gzip",
         "matchit",
         "matchparen",

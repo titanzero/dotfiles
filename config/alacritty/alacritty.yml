@@ -24,6 +24,8 @@ font:
     family: CaskaydiaCove Nerd Font Mono
     style: Bold Italic
   size: 13
+    #  offset:
+    #    y: 12
 colors:
   primary:
     background: '#1E1E2E'  # base

@@ -11,4 +11,4 @@
 ---  ZeroVim Config
 ---
 
-require("zero.core.lazy")
+require("zero")
