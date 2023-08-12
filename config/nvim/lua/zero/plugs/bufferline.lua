@@ -14,7 +14,6 @@ return {
         indicator = {
           style = "icon",
         },
-        close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
         diagnostics_indicator = function(_, _, diagnostics_dict, _)
           local s = " "
           for e, n in pairs(diagnostics_dict) do
@@ -32,8 +31,5 @@ return {
         },
       },
     },
-    keys = {
-      { "<leader>w", "bdelete! %d", desc = "Delete the current buffer" }
-    }
   },
 }
