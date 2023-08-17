@@ -9,7 +9,7 @@ return {
     opts = {
       color_icons = true,
       default = true,
-    }
+    },
   },
   {
     "MunifTanjim/nui.nvim",
@@ -27,13 +27,18 @@ return {
     opts = {
       show_current_context = true,
       show_current_context_start = true,
-    }
+    },
   },
   {
     "rcarriga/nvim-notify",
     lazy = true,
     opts = {
-      fps = 60,
+      fps = 120,
+      icons = {
+        ERROR = " ",
+        INFO = " ",
+        WARN = " ",
+      },
       timeout = 3000,
       max_height = function()
         return math.floor(vim.o.lines * 0.75)

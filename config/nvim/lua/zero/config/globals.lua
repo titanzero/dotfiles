@@ -38,7 +38,7 @@ local settings = {
   spelllang = { "it", "en" },
   timeoutlen = 500,
   updatetime = 500,
-  clipboard = "unnamedplus"
+  clipboard = "unnamedplus",
 }
 
 for key, value in pairs(settings) do

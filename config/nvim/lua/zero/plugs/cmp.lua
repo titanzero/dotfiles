@@ -2,12 +2,11 @@ return {
   {
     "onsails/lspkind.nvim",
     lazy = true,
-    config = function(_, opts)
-    end,
+    config = function(_, opts) end,
     opts = {
       mode = "symbol_text",
-      symbol_map = require("zero.utils.iconk")
-    }
+      symbol_map = require("zero.utils.iconk"),
+    },
   },
   {
     "L3MON4D3/LuaSnip",
@@ -41,14 +40,8 @@ return {
       local has_words_before = function()
         unpack = unpack or table.unpack
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(
-          0,
-          line - 1,
-          line,
-          true
-        )[1]:sub(col, col):match("%s") == nil
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
-
 
       -- Return config table
       return {
@@ -56,11 +49,11 @@ return {
           entries = {
             name = "custom",
             selection_order = "near_cursor",
-          }
+          },
         },
         window = {
           completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered()
+          documentation = cmp.config.window.bordered(),
         },
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -124,9 +117,7 @@ return {
           if vim.api.nvim_get_mode().mode == "c" then
             return true
           else
-            return
-              not context.in_treesitter_capture("comment") and
-              not context.in_syntax_group("Comment")
+            return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
           end
         end,
       }

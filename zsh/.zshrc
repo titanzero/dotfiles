@@ -22,6 +22,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.opt/cross/bin:$PATH"
+export PATH="$HOME/.opt/omnisharp:$PATH"
 
 ### Angigen
 #

@@ -2,12 +2,12 @@ return {
   {
     "akinsho/bufferline.nvim",
     dependencies = {
-      { "catppuccin" }
+      { "catppuccin" },
     },
     event = { "BufReadPost" },
     lazy = true,
     opts = {
---      highlights = require("catppuccin.groups.integrations.bufferline").get(),
+      --      highlights = require("catppuccin.groups.integrations.bufferline").get(),
       options = {
         diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
         separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },

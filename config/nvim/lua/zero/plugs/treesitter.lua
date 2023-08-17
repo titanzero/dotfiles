@@ -11,7 +11,14 @@ return {
     end,
     opts = {
       ensure_installed = {
-        "c", "regex", "bash", "markdown", "markdown_inline", "lua", "c_sharp", "norg"
+        "c",
+        "regex",
+        "bash",
+        "markdown",
+        "markdown_inline",
+        "lua",
+        "c_sharp",
+        "norg",
       },
       highlight = {
         enable = true,

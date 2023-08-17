@@ -26,7 +26,7 @@ return {
           height = 0.60,
           preview_cutoff = 120,
         },
-      }
+      },
     },
     keys = {
       -- File search && Fuzzy

@@ -7,10 +7,13 @@ map("n", "<Esc>", "", {
     vim.cmd("noh")
 
     if require("zero.utils.loaded")("nvim-notify") then
-      require("notify").dismiss({ silent = true, pending = true })
+      package.loaded.notify.dismiss({ silent = true, pending = true })
     end
   end,
   desc = "Dismiss HLSearch and Notify",
   noremap = true,
   silent = true,
 })
+
+--===== <leader>w to quit buffer
+map("n", "<leader>w", ":bdelete!<cr>", opts)
