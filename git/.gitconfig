@@ -12,6 +12,5 @@
 	s = status
 	fall = fetch --all
 	pff = pull --ff --force
-
-[includeif "gitdir:~/Work/gipo/"]
-	path = .gitconfig.work
+[pull]
+	rebase = true

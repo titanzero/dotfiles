@@ -19,10 +19,7 @@ export EDITOR="$VISUAL"
 ### Export PATHs
 #
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$HOME/.dotnet/tools:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.opt/cross/bin:$PATH"
-export PATH="$HOME/.opt/omnisharp:$PATH"
+export PATH="/opt/gcc-elf/bin:$PATH"
 
 ### Angigen
 #
@@ -40,6 +37,7 @@ antigen apply
 #
 alias mkdir='mkdir -p'
 alias pwgen='pwgen -cyns 50 1 | pbcopy'
+alias ydl='youtube-dl --audio-quality 320K --recode-video mp4 -k'
 
 ### Functions
 #
@@ -54,4 +52,4 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 
-export N_PREFIX="$HOME/.util/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
