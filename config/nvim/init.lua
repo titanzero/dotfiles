@@ -9,7 +9,6 @@ local settings = {
   -- numberwidth = 4 => default
 
   --===== Cursor
-  cursorline = true,
   cursorcolumn = false,
 
   --===== UI improvements
@@ -20,11 +19,11 @@ local settings = {
   splitright = true,
   splitbelow = true,
   signcolumn = "yes:2",
-  mouse = "",
+  mouse = "a",
   completeopt = { "menu", "menuone", "noselect" },
   syntax = "off",
   laststatus = 3,
-  statuscolumn = "%=%r|%T%s",
+  statuscolumn = "%=%r│%T%s",
   -- lazyredraw = true, => faulty with noice
 
   --===== Search
@@ -57,4 +56,4 @@ for _, provider in pairs(disable_providers) do
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
-require("zero")
+--require("zero")

@@ -1,0 +1,12 @@
+# -*- mode: gitignore; -*-
+
+*~
+\#*\#
+.\#*
+
+# unused folders
+/auto-save-list/
+/eln-cache/
+/elpaca/
+/tree-sitter/
+/transient/
