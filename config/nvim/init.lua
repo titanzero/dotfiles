@@ -18,9 +18,9 @@ local settings = {
   showtabline = 0,
   splitright = true,
   splitbelow = true,
-  signcolumn = "yes:2",
+  signcolumn = "yes:1",
   mouse = "a",
-  completeopt = { "menu", "menuone", "noselect" },
+  completeopt = { "menu", "menuone", "noselect", "noinsert" },
   syntax = "off",
   laststatus = 3,
   statuscolumn = "%=%r│%T%s",
@@ -56,4 +56,4 @@ for _, provider in pairs(disable_providers) do
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
---require("zero")
+require("tzero")

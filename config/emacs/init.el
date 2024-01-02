@@ -120,4 +120,84 @@
 (use-package magit)
 (use-package git-gutter
   :config
-  (global-git-gutter-mode))
+  (global-git-gutter-mode)
+  (custom-set-variables
+   '(git-gutter:window-width 1)
+   '(git-gutter:modified-sign "░")
+   '(git-gutter:added-sign "░")
+   '(git-gutter:deleted-sign "░")))
+
+;; Projectile
+(use-package projectile
+  :config
+  (projectile-mode))
+
+;; Dashboard
+(use-package dashboard
+  :init
+  (setq dashboard-set-heading-icons t
+	dashboard-set-file-icons t
+	dashboard-banner-logo-title "Let's start hacking!"
+	dashboard-startup-banner 'logo
+	dashboard-center-content t
+	dashboard-items '((recents . 5)
+			  (agenda . 5)
+			  (projects . 3)
+			  (registers . 3)
+			  (bookmarks . 3)))
+  :config
+  (dashboard-setup-startup-hook))
+
+;; Org mode
+(use-package org
+  :init
+  (setq org-directory "~/Org"
+	org-agenda-files '("~/Org")
+	org-src-fontify-natively t
+	org-pretty-entities t
+	org-log-done 'time
+	org-log-reschedule t
+	org-default-notes-file (concat org-directory "notes.org")
+	org-return-follows-link t
+	org-hide-emphasis-markers t)
+  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (add-hook 'org-mode-hook 'visual-line-mode)
+  :config
+  (org-babel-do-load-languages 'org-babel-load-languages
+			       '((emacs-lisp . t)
+				 (C . t))))
+;; General
+(use-package general
+  :config
+  (general-evil-setup)
+
+  ;; Space as global key
+  (general-crete-definer tzero/leader-keys
+			 :status '(normal insert visual emacs)
+			 :keymaps 'override
+			 :prefix "SPC"
+			 :global-prefix "M-SPC")
+
+  (tzero/leader-keys
+   "SPC" '(counsel-M-x :wk "Counsel M-x")
+   "TAB TAB" '(comment-line :wk "Comment line"))
+
+  ;; Projectile
+  (tzero/leader-keys
+   "p" '(projectile-command-map :wk "Projectile"))
+
+  ;; Open "modes"
+  (tzero/leader-keys
+   "m" '(:ignore t :wk "Open")
+   "m d" '(dashboard-open :wk "Dashboard"))
+
+  ;; Agenda
+  (tzero/leader-keys
+   "o" '(:ignore t :wk "Org")
+   "o a" '(org-agenda :wk "Org agenda")
+   "o e" '(org-export-dispatch :wk "Org export dispatch")
+   "o i" '(org-toggle-item :wk "Org toggle item")
+   "o t" '(org-todo :wk "Org todo")
+   "o B" '(org-babel-tangle :wk "Org babel tangle")
+   "o T" '(org-todo-list :wk "Org todo list")))
