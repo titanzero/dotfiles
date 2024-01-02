@@ -12,11 +12,10 @@ return {
       ensure_installed = {
         "lua",
         "regex",
-        "org",
+        "norg",
       },
       highlight = {
         enable = true,
-        additional_vim_regex_highlighting = { "org" },
       },
       indent = {
         enable = true,

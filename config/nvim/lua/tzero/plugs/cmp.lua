@@ -16,6 +16,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    lazy = true,
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "hrsh7th/cmp-buffer",
@@ -105,12 +106,11 @@ return {
         }),
       })
 
-      cmp.setup.filetype("org", {
+      cmp.setup.filetype("neorg", {
         sources = cmp.config.sources({
-          { name = "orgmode" },
+          { name = "neorg" },
         }, {
           { name = "buffer" },
-          { name = "path" },
         }),
       })
     end,

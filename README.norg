@@ -1,0 +1,20 @@
+@document.meta
+title: README
+description: Simple readme for my dotfiles
+authors: Nicola Leonardi <titanzero>
+categories: 
+created: 2024-01-02T23:01:24+0100
+updated: 2024-01-03T00:34:43+0100
+version: 1.1.1
+@end
+
+* Welcome dear stranger, to my personal dotfiles
+  This file is a simple reminder, firstly to myself, on what to do and in which order
+  restore my personal dotfiles from a disaster ^1^
+
+* Notes
+  - ^1^: disaster, should be correctly read as:
+  -- format 
+  -- format
+  -- format 
+
