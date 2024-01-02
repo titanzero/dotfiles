@@ -1,4 +1,4 @@
-<h1 align='center'>Welcome to the wasted land of dotfiles 🔥</h1>
+<h1 align='center'>DEPRECATED: PLEASE GO <a href="https://codeberg.org/titanzero/dotfiles">HERE</a></h1>
 ---
 
 <img src='img/wezterm.jpg' alt='Wezterm' width='800' style='display: inline-block; margin: 0 auto;' />
