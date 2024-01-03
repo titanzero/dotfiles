@@ -20,7 +20,7 @@ local settings = {
   splitbelow = true,
   signcolumn = "yes:1",
   mouse = "a",
-  completeopt = { "menu", "menuone", "noselect", "noinsert" },
+  --completeopt = { "menu", "menuone", "noselect", "noinsert" },
   syntax = "off",
   laststatus = 3,
   statuscolumn = "%=%r│%T%s",

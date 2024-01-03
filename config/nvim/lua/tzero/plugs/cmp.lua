@@ -56,6 +56,9 @@ return {
           { name = "buffer" },
           { name = "path" },
         }),
+        ompletion = {
+		      completeopt = "menu,menuone,noselect,noinsert",
+	      },
         mapping = cmp.mapping.preset.insert({
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -80,15 +83,19 @@ return {
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
           ["<C-e>"] = cmp.mapping(function(callback)
             luasnip.unlink_current()
             callback()
           end),
           ["<Esc>"] = cmp.mapping.abort(),
         }),
+        preselect = cmp.PreselectMode.None,
         enabled = function()
           local context = require("cmp.config.context")
+          local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+
+		      if buftype == "prompt" then return false end
 
           if vim.api.nvim_get_mode().mode == "c" then
             return true
