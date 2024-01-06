@@ -10,7 +10,7 @@ return {
         },
         shortcut = {
           { desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
-          { desc = " Config", group = "@property", action = "e ~/.config/nvim/init.lua", key = "e" }
+          { desc = " Files", group = "Label", action = "Telescope find_files", key = "f" },
         }
       },
     },

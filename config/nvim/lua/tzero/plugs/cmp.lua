@@ -57,7 +57,7 @@ return {
           { name = "path" },
         }),
         ompletion = {
-		      completeopt = "menu,menuone,noselect,noinsert",
+		      completeopt = "menu,menuone,noinsert",
 	      },
         mapping = cmp.mapping.preset.insert({
           ["<Tab>"] = cmp.mapping(function(fallback)
@@ -83,7 +83,7 @@ return {
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
           ["<C-e>"] = cmp.mapping(function(callback)
             luasnip.unlink_current()
             callback()
