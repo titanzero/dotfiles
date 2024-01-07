@@ -9,11 +9,17 @@ return {
     },
     opts = {
       load = {
-        ["core.defaults"] = {
+        ["core.journal"] = {
           config = {
-            journal_folder = "~/Org/journal"
-          }
+            journal_folder = "~/Neorg/journal",
+          },
         }, -- Loads default behaviour
+        ["core.qol.toc"] = {
+          config = {
+            close_after_use = true,
+            sync_cursorline = true,
+          },
+        },
         ["core.export"] = {},
         ["core.concealer"] = {}, -- Adds pretty icons to your documents
         ["core.completion"] = {
@@ -24,7 +30,7 @@ return {
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
-              notes = "~/Org/notes",
+              notes = "~/Neorg/notes",
             },
             default_workspace = "notes"
           },

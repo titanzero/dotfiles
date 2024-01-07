@@ -13,6 +13,8 @@ return {
         "lua",
         "regex",
         "norg",
+        "markdown",
+        "markdown_inline"
       },
       highlight = {
         enable = true,
