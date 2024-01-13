@@ -6,7 +6,6 @@ local settings = {
   --===== Line numbers
   number = true,
   relativenumber = true,
-  -- numberwidth = 4 => default
 
   --===== Cursor
   cursorcolumn = false,
@@ -20,11 +19,11 @@ local settings = {
   splitbelow = true,
   signcolumn = "yes:1",
   mouse = "a",
-  --completeopt = { "menu", "menuone", "noselect", "noinsert" },
   syntax = "off",
   laststatus = 3,
   statuscolumn = "%=%r│%T%s",
-  -- lazyredraw = true, => faulty with noice
+  -- NOTE: With noice, this setting should be turned off
+  lazyredraw = true,
 
   --===== Search
   incsearch = true,
@@ -34,10 +33,13 @@ local settings = {
   grepprg = "rg --vimgrep",
 
   --===== Misc
-  spelllang = { "it", "en" },
   timeoutlen = 500,
   updatetime = 500,
   clipboard = "unnamedplus",
+
+  --===== Spell
+  spelllang = "en_us",
+  spell = true,
 }
 
 for key, value in pairs(settings) do

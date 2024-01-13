@@ -1,5 +1,5 @@
 require("tzero.utils.lazyload")(function()
-  require("tzero.globals.keymaps")
+  require("tzero.globals.keymaps").general()
   require("tzero.globals.functions")
 end)
 
