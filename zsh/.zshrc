@@ -38,6 +38,8 @@ antigen apply
 alias mkdir='mkdir -p'
 alias pwgen='pwgen -cyns 50 1 | pbcopy'
 alias ydl='youtube-dl --audio-quality 320K --recode-video mp4 -k'
+alias vim='nvim'
+alias vi='nvim'
 
 ### Functions
 #

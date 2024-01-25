@@ -30,6 +30,8 @@ _M.general = function()
   map("n", "<c-l>", "<c-w>l", opts)
   map("n", "<c-j>", "<c-w>j", opts)
   map("n", "<c-k>", "<c-w>k", opts)
+
+  map("i", "<F2>", "<c-\\><c-o>:w<cr>", opts)
 end
 
 --- Attach specific key maps to buffers with gitsigns
