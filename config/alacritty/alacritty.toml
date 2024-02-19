@@ -1,0 +1,26 @@
+live_config_reload = true
+import = [
+	"~/.cache/alacritty-themes/themes/catppuccin_mocha.toml"
+]
+
+[shell]
+program = "/opt/homebrew/bin/tmux"
+args = ["new-session", "-A", "-D", "-s", "main"]
+
+
+[window]
+#decorations = "None"
+padding = { x = 2, y = 2 }
+
+[font]
+size = 14
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Light" }
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Light Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
+
+[bell]
+duration = 100
+
+[mouse]
+hide_when_typing = true

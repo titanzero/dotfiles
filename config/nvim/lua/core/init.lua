@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  spec = "tzero.plugs",
+  spec = "core.plugs",
   defaults = {
     lazy = false,
     version = "*", -- try installing the latest stable version for plugins that support semver

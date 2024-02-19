@@ -58,4 +58,4 @@ for _, provider in pairs(disable_providers) do
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
-require("tzero")
+require("core")

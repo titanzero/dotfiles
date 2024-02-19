@@ -11,8 +11,8 @@ return {
     opts = {
       ensure_installed = {
         "lua",
+        "vimdoc",
         "regex",
-        "norg",
         "markdown",
         "markdown_inline"
       },
