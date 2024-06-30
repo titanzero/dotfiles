@@ -5,9 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+export HOMEBREW_NO_ENV_HINT=1
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export LANG=en_US.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
+
 source $ZSH/oh-my-zsh.sh
 source $ZSH/antigen.zsh
 
@@ -19,7 +22,9 @@ export EDITOR="$VISUAL"
 ### Export PATHs
 #
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/gcc-elf/bin:$PATH"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+#export PATH="/opt/gcc-elf/bin:$PATH"
+#export PATH="$HOME/.cargo/bin:$PATH"
 
 ### Angigen
 #
@@ -37,7 +42,7 @@ antigen apply
 #
 alias mkdir='mkdir -p'
 alias pwgen='pwgen -cyns 50 1 | pbcopy'
-alias ydl='youtube-dl --audio-quality 320K --recode-video mp4 -k'
+alias ydl='yt-dlp --audio-quality 320K --recode-video mp4 -k'
 alias vim='nvim'
 alias vi='nvim'
 
@@ -47,12 +52,7 @@ function dot { cd ~/.dotfiles }
 function rr { cd ~/[wW]ork/$@ }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
-### To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 
-
-export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

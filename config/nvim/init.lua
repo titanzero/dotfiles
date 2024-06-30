@@ -1,61 +1,56 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.opt.shortmess:append("fsWcI")
+local op = vim.opt
+local g = vim.g
 
-local settings = {
-  --===== Line numbers
-  number = true,
-  relativenumber = true,
+-- Leader key
+g.mapleader = " "
+g.maplocalleader = " "
 
-  --===== Cursor
-  cursorcolumn = false,
+-- UI
+op.shortmess:append("fsWcI")
+op.number = true
+op.relativenumber = true
+op.showcmd = false
+op.cmdheight = 0
+op.showmode = false
+op.showtabline = 0
+op.splitright = true
+op.splitbelow = true
+op.signcolumn = "yes:1"
+op.mouse = "a"
+op.syntax = "off"
+op.laststatus = 3
+op.statuscolumn = "%=%r│%T%s"
 
-  --===== UI improvements
-  showcmd = false,
-  cmdheight = 0,
-  showmode = false,
-  showtabline = 0,
-  splitright = true,
-  splitbelow = true,
-  signcolumn = "yes:1",
-  mouse = "a",
-  syntax = "off",
-  laststatus = 3,
-  statuscolumn = "%=%r│%T%s",
-  -- NOTE: With noice, this setting should be turned off
-  lazyredraw = true,
+-- Netrw improvements
+g.netrw_banner = 0
+g.netrw_fastbrowse = 0
+g.netrw_localcopydircmd = "cp -r"
+g.netrw_winsize = 30
 
-  --===== Search
-  incsearch = true,
-  ignorecase = true,
-  smartcase = true,
-  grepformat = "%f:%l:%c:%m",
-  grepprg = "rg --vimgrep",
+-- Improve
+op.lazyredraw = true
 
-  --===== Misc
-  timeoutlen = 500,
-  updatetime = 500,
-  clipboard = "unnamedplus",
+-- Search
+op.incsearch = true
+op.ignorecase = true
+op.smartcase = true
+op.grepformat = "%f:%l:%c:%m"
+op.grepprg = "rg --vimgrep"
 
-  --===== Spell
-  spelllang = "en_us",
-  spell = true,
-}
+-- Misc
+op.timeoutlen = 500
+op.updatetime = 500
+op.clipboard = "unnamedplus"
 
-for key, value in pairs(settings) do
-  vim.opt[key] = value
-end
+-- Spell
+op.spelllang = "en_us"
+op.spell = true
 
-local disable_providers = {
-  "node",
-  "perl",
-  "python3",
-  "python",
-  "ruby",
-}
+-- Disable some providers
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
 
-for _, provider in pairs(disable_providers) do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
-end
-
-require("core")
+require("zero")

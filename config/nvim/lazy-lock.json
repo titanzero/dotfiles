@@ -1,9 +1,5 @@
 {
-  "catppuccin": { "branch": "main", "commit": "5e36ca599f4aa41bdd87fbf2c5aae4397ac55074" },
-  "fzf-lua": { "branch": "main", "commit": "91ec17b4fd0d810599f054eef08db967a0457fbf" },
-  "lazy.nvim": { "branch": "main", "commit": "28126922c9b54e35a192ac415788f202c3944c9f" },
-  "mini.comment": { "branch": "main", "commit": "3d9c8009615857e982f09bc5357fc95f2a2175f3" },
-  "mini.pairs": { "branch": "main", "commit": "71f117fd57f930da6ef4126b24f594dd398bac26" },
-  "nvim-treesitter": { "branch": "master", "commit": "f197a15b0d1e8d555263af20add51450e5aaa1f0" },
-  "nvim-web-devicons": { "branch": "master", "commit": "a55b801b7ef5719ca25692c3a0a5447fdfb692ed" }
+  "btw.nvim": { "branch": "master", "commit": "47f6419e90d3383987fd06e8f3e06a4bc032ac83" },
+  "cyberdream.nvim": { "branch": "main", "commit": "2db8a95bc3c8a7809a930752dd606cbe07826747" },
+  "lazy.nvim": { "branch": "main", "commit": "4c6479e98ad643cd584e9e7c4095c463e0d810eb" }
 }

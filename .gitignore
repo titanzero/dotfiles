@@ -56,3 +56,5 @@ Session.vim
 .vscode/
 compiled.lua
 .luarc.json
+
+*.bak/

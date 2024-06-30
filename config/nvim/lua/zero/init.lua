@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  spec = "core.plugs",
+  spec = "zero.plugs",
   defaults = {
     lazy = false,
     version = "*", -- try installing the latest stable version for plugins that support semver
@@ -31,7 +31,6 @@ require("lazy").setup({
   performance = {
     rtp = {
       disabled_plugins = {
-        "netrwPlugin",
         "gzip",
         "matchit",
         "matchparen",
