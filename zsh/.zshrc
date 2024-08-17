@@ -23,8 +23,8 @@ export EDITOR="$VISUAL"
 #
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
-#export PATH="/opt/gcc-elf/bin:$PATH"
-#export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/opt/gcc-elf/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 ### Angigen
 #

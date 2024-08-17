@@ -1,5 +1,9 @@
 {
   "btw.nvim": { "branch": "master", "commit": "47f6419e90d3383987fd06e8f3e06a4bc032ac83" },
-  "cyberdream.nvim": { "branch": "main", "commit": "2db8a95bc3c8a7809a930752dd606cbe07826747" },
-  "lazy.nvim": { "branch": "main", "commit": "4c6479e98ad643cd584e9e7c4095c463e0d810eb" }
+  "cyberdream.nvim": { "branch": "main", "commit": "44298743af54fa9fc92ce85529dbc06b8ac73f4f" },
+  "flash.nvim": { "branch": "main", "commit": "ec0bf2842189f65f60fd40bf3557cac1029cc932" },
+  "fzf-lua": { "branch": "main", "commit": "8f9c3a2e308755c25630087f3c5d35786803cfd0" },
+  "hardtime.nvim": { "branch": "main", "commit": "18bd2ce689f9fea030db57177d75bb740aa93686" },
+  "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
+  "nvim-web-devicons": { "branch": "master", "commit": "5b9067899ee6a2538891573500e8fd6ff008440f" }
 }

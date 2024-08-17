@@ -1,6 +1,4 @@
 return {
-  {
-    "letieu/btw.nvim",
-    config = true,
-  }
+  "letieu/btw.nvim",
+  config = true,
 }
