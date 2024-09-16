@@ -2,7 +2,6 @@ local wezterm = require('wezterm')
 local config = {}
 
 return {
-  --color_scheme = "Catppuccin Mocha",
   font_size = 14,
   line_height = 1.3,
   font = wezterm.font('Cascadia Code', { weight = 'Light' }),

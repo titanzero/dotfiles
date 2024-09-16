@@ -22,9 +22,7 @@ export EDITOR="$VISUAL"
 ### Export PATHs
 #
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/opt/gcc-elf/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 
 ### Angigen
 #
@@ -53,6 +51,6 @@ function rr { cd ~/[wW]ork/$@ }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
-[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
+[[ ! -f $HOME/.dotfiles/zsh/.p10k.zsh ]] || source $HOME/.dotfiles/zsh/.p10k.zsh
 
 export N_PREFIX="/opt/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
