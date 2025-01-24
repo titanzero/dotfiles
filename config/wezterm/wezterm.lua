@@ -4,7 +4,8 @@ local config = {}
 return {
   font_size = 14,
   line_height = 1.3,
-  font = wezterm.font('Cascadia Code', { weight = 'Light' }),
+  --font = wezterm.font('Cascadia Code', { weight = 'Light' }),
+  font = wezterm.font('ComicShannsMono Nerd Font'),
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = true,
   window_padding = {

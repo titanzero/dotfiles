@@ -23,6 +23,7 @@ export EDITOR="$VISUAL"
 #
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/gcc-elf/bin:$PATH"
+export PATH="/Users/nicola/Library/Python/3.9/bin:$PATH"
 
 ### Angigen
 #
@@ -49,6 +50,8 @@ alias vi='nvim'
 function dot { cd ~/.dotfiles }
 function rr { cd ~/[wW]ork/$@ }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
+
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f $HOME/.dotfiles/zsh/.p10k.zsh ]] || source $HOME/.dotfiles/zsh/.p10k.zsh

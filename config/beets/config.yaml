@@ -1,0 +1,33 @@
+directory: ~/Music/Store
+library: ~/Music/Store/MusicLibrary.db
+
+plugins: fetchart embedart convert
+
+import:
+  move: yes
+  write: yes
+
+fetchart:
+  auto: yes
+  cover_names: cover front album art
+  minwidth: 500
+  enforce_ratio: yes
+  sources: coverart albumart itunes amazon filesystem *
+
+embedart:
+  auto: yes
+  compare_threshold: 50
+
+convert:
+  auto: yes
+  embed: yes
+  copy_album_art: yes
+  format: mp3
+  formats:
+    mp3: ffmpeg -i $source -y -ab 320k $dest
+
+paths:
+    default: $albumartist/$original_year - $album/$track $title
+    singleton: Singletons/$artist - $title
+    comp: Compilations/$original_year - $album/$track $title
+    albumtype:soundtrack: Soundtracks/$original_year - $album/$track $title
