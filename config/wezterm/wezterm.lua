@@ -1,5 +1,4 @@
 local wezterm = require('wezterm')
-local config = {}
 
 return {
   font_size = 14,

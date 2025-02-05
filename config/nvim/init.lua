@@ -25,6 +25,9 @@ vim.opt.showmode = false
 -- Setting undo history
 vim.opt.undofile = true
 
+-- Setting complete opt
+vim.opt.completeopt = { "menu", "menuone", "noinsert", "noselect" }
+
 -- Sync clipboard between OS and NeoVim.
 --	Schedule the setting after `UiEnter` because it can increase startup-time
 vim.schedule(function()
@@ -53,8 +56,8 @@ vim.opt.timeoutlen = 300
 -- Sets how NeoVim will display certain white space characters in the editor.
 --	See `:help "list"`
 --	and `:help "listchars"`
-vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+--vim.opt.list = true
+--vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Enable some graphic and UI improvements
 vim.opt.inccommand = "split"
@@ -68,6 +71,9 @@ vim.opt.laststatus = 3
 
 -- Enable lazy redraw
 vim.opt.lazyredraw = true
+
+-- Reserve space in the gutter
+vim.opt.signcolumn = "yes"
 
 -- Enable spell checker
 vim.opt.spelllang = "en_us"
@@ -91,13 +97,32 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- Lsp keymaps
+-- Attach some keymaps when lsp server start
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "LSP actions",
+	callback = function(event)
+		local opts = { buffer = event.buf }
+
+		vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+		vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+		vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+		vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+		vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+		vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+		vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+		vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+		vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+		vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+	end,
+})
 
 -- Install `lazy.nvim` plugin manager
 --	See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
 	if vim.v.shell_error ~= 0 then
 		error("Error cloning lazy.nvim:\n" .. out)
 	end
@@ -134,6 +159,9 @@ require("lazy").setup({
 	},
 	checker = {
 		enabled = false,
+		notify = false,
+	},
+	change_detection = {
 		notify = false,
 	},
 	performance = {
