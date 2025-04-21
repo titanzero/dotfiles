@@ -9,6 +9,10 @@ return {
 			percentage = 0.30,
 		},
 		default_integrations = false,
+		integrations = {
+			gitsigns = true,
+			fzf = true,
+		},
 		--integrations = {
 		--	fzf = true,
 		--	treesitter = true,
