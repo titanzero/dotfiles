@@ -1,0 +1,19 @@
+#~~ Win sizes
+window-width = 150
+window-height = 35
+
+#~~ Load theme
+theme = catppuccin-mocha
+
+#~~ Cursor
+cursor-style-blink = true
+mouse-hide-while-typing = true
+
+#~~ Fonts
+font-family = "IosevkaTerm Nerd Font Mono"
+font-style = "Light"
+font-feature = +calt +liga +dlig
+font-size = 16
+
+#~~ Improvements
+shell-integration-features = sudo

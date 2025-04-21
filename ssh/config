@@ -1,0 +1,2 @@
+Host *
+   IdentityAgent "~/Library/Group Containers/group.strongbox.mac.mcguill/agent.sock"

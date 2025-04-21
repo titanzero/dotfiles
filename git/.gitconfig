@@ -1,0 +1,16 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Nicola Leonardi
+	email = nicolaleonardi@outlook.com
+[core]
+	editor = nvim
+[alias]
+    	la = log --graph --abbrev-commit --decorate --date=rfc --format=format:'%C(bold blue)%h%C(reset) %<(30,trunc)%s %C(reset)%C(bold yellow)%d%C(reset)' --all 
+    	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' 
+    	lga = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	cane = commit --amend --no-edit
+	s = status
+	fall = fetch --all
+	pff = pull --ff --force
+[pull]
+	rebase = true
