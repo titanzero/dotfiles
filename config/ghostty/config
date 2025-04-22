@@ -10,10 +10,10 @@ cursor-style-blink = true
 mouse-hide-while-typing = true
 
 #~~ Fonts
-font-family = "IosevkaTerm Nerd Font Mono"
+font-family = "Cascadia Code NF"
 font-style = "Light"
 font-feature = +calt +liga +dlig
-font-size = 16
+font-size = 15
 
 #~~ Improvements
 shell-integration-features = sudo

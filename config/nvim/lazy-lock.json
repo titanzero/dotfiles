@@ -1,4 +1,5 @@
 {
+  "alpha-nvim": { "branch": "main", "commit": "de72250e054e5e691b9736ee30db72c65d560771" },
   "catppuccin": { "branch": "main", "commit": "c9e205fe035d622b3c2d66ee42edf368c0c31fd5" },
   "fzf-lua": { "branch": "main", "commit": "47b85a25c0c0b2c20b4e75199ed01bb71e7814f5" },
   "gitsigns.nvim": { "branch": "main", "commit": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9" },
