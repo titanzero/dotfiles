@@ -3,7 +3,7 @@ return {
 	event = {
 		"BufReadPre",
 	},
-	config = {
+	opts = {
 		attach_to_untracked = true,
 	},
 }
