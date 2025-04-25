@@ -83,6 +83,9 @@ require("lazy").setup({
 		lazy = false,
 		version = "*", -- try installing the latest stable version for plugins that support semver
 	},
+	rocks = {
+		enabled = false,
+	},
 	ui = {
 		border = "rounded",
 		size = {

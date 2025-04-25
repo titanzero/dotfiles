@@ -13,6 +13,7 @@ return {
 			gitsigns = true,
 			fzf = true,
 			alpha = true,
+			treesitter = true,
 		},
 	},
 	config = function(_, opts)

@@ -18,5 +18,28 @@ return {
 				default = "bat",
 			},
 		},
+		manpages = {
+			previewer = "man_native"
+		},
+		helptags = {
+			previewer = "help_native"
+		},
+		lsp = {
+			code_actions = {
+				previewer = "codeaction_native"
+			},
+		},
+		tags = {
+			previewer = "bat"
+		},
+		btags = {
+			previewer = "bat"
+		},
+		previewers = {
+			bat = {
+				cmd = "bat",
+				args = "--tabs=1 --color=always"
+			},
+		},
 	},
 }
