@@ -8,12 +8,7 @@ return {
 			enabled = true,
 			percentage = 0.30,
 		},
-		default_integrations = false,
 		integrations = {
-			gitsigns = true,
-			fzf = true,
-			alpha = true,
-			treesitter = true,
 		},
 	},
 	config = function(_, opts)

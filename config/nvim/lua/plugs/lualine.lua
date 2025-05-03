@@ -7,8 +7,8 @@ return {
 		options = {
 			theme = "catppuccin",
 			disabled_filetypes = {
-				"alpha",
-				"fzf"
+				"snacks_dashboard",
+				"snacks_picker_input",
 			},
 		}
 	},

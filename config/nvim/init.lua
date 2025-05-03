@@ -4,17 +4,20 @@
  ╩ ┴ ┴┴└─┘	┴└─┘	┴ ┴o  ┴ ┴ ┴┴└─┘	┴└─┘	└┴┘┴ ┴└─┘┴└─└─┘  ╩	└─┘└─┘┴─┘└─┘┘└┘└─┘o
 
  Welcome to all, on my humble minimal and functional (at least for me)
- NeoVim configuration file.
+ Neovim configuration file.
 
  I hope you enjoy, and maybe take a change on trying out this wonderful
  world, be ready to fall into this rabbit hole...
 --]]
 
+--[[ Enable some experimental features ]]
+--vim.loader.enable()
+
 --[[ Map leader and local leader ]]
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---[[ Ui tweaks and settings ]]
+--[[ UI tweaks and settings ]]
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
@@ -44,27 +47,25 @@ vim.opt.grepprg = "rg --vimgrep"
 
 --[[ Spell & times ]]
 vim.opt.spelllang = "en_us"
-vim.opt.spell = true
+vim.opt.spell = false
 
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 600
 
---[[ Disable some lang providers ]]
+--[[ Disable some language providers ]]
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
 
---[[ Basic commands and schedules ]]
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
 
---[[ Require some utils ]]
-require("utils")
+--[[ Require some utils and keymaps ]]
+require("zero")
+require("keys")
 
 --[[ Install lazy package manager ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
