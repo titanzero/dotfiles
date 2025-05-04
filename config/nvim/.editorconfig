@@ -1,20 +1,7 @@
 root = true
 
 [*]
-charset = utf-8
-end_of_line = lf
 insert_final_newline = true
-trim_trailing_whitespace = true
-
-[*.{lua,json,toml}]
-indent_style = tab
-tab_width = 2
-quote_style = double
-max_line_length = 80
-
-[*.md]
 indent_style = space
-indent_size = 4
-
-[lazy-lock.json]
-insert_final_newline = false
+indent_size = 2
+charset = utf-8

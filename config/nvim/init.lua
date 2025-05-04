@@ -1,7 +1,7 @@
 --[[
-╔╦╗┬ ┬┬┌─┐	┬┌─┐	┬┌┬┐ ┌┬┐┬ ┬┬┌─┐	┬┌─┐	┬ ┬┬ ┬┌─┐┬─┐┌─┐  ╦	┌┐ ┌─┐┬  ┌─┐┌┐┌┌─┐
- ║ ├─┤│└─┐	│└─┐	│ │	  │ ├─┤│└─┐	│└─┐	│││├─┤├┤ ├┬┘├┤	 ║	├┴┐├┤ │  │ │││││ ┬
- ╩ ┴ ┴┴└─┘	┴└─┘	┴ ┴o  ┴ ┴ ┴┴└─┘	┴└─┘	└┴┘┴ ┴└─┘┴└─└─┘  ╩	└─┘└─┘┴─┘└─┘┘└┘└─┘o
+╔╦╗┬ ┬┬┌─┐  ┬┌─┐  ┬┌┬┐ ┌┬┐┬ ┬┬┌─┐ ┬┌─┐  ┬ ┬┬ ┬┌─┐┬─┐┌─┐  ╦  ┌┐ ┌─┐┬  ┌─┐┌┐┌┌─┐
+ ║ ├─┤│└─┐  │└─┐  │ │   │ ├─┤│└─┐ │└─┐  │││├─┤├┤ ├┬┘├┤   ║  ├┴┐├┤ │  │ │││││ ┬
+ ╩ ┴ ┴┴└─┘  ┴└─┘  ┴ ┴o  ┴ ┴ ┴┴└─┘ ┴└─┘  └┴┘┴ ┴└─┘┴└─└─┘  ╩  └─┘└─┘┴─┘└─┘┘└┘└─┘o
 
  Welcome to all, on my humble minimal and functional (at least for me)
  Neovim configuration file.
@@ -60,7 +60,7 @@ vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+  vim.opt.clipboard = "unnamedplus"
 end)
 
 --[[ Require some utils and keymaps ]]
@@ -70,64 +70,64 @@ require("keys")
 --[[ Install lazy package manager ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		error("Error cloning lazy.nvim:\n" .. out)
-	end
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    error("Error cloning lazy.nvim:\n" .. out)
+  end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	spec = "plugs",
-	defaults = {
-		lazy = false,
-		version = "*", -- try installing the latest stable version for plugins that support semver
-	},
-	rocks = {
-		enabled = false,
-	},
-	ui = {
-		border = "rounded",
-		size = {
-			width = 0.6,
-			height = 0.5,
-		},
-		icons = {
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
-		},
-	},
-	checker = {
-		enabled = false,
-		notify = false,
-	},
-	change_detection = {
-		notify = false,
-	},
-	performance = {
-		rtp = {
-			disabled_plugins = {
-				"gzip",
-				"matchit",
-				"netrw",
-				"matchparen",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
-				"zipPlugin",
-			},
-		},
-	},
+  spec = "plugs",
+  defaults = {
+    lazy = false,
+    version = "*", -- try installing the latest stable version for plugins that support semver
+  },
+  rocks = {
+    -- enabled = false,
+  },
+  ui = {
+    border = "rounded",
+    size = {
+      width = 0.6,
+      height = 0.5,
+    },
+    icons = {
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      require = "🌙",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+    },
+  },
+  checker = {
+    enabled = false,
+    notify = false,
+  },
+  change_detection = {
+    notify = false,
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "netrw",
+        "matchparen",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })

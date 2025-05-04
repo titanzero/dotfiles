@@ -1,12 +1,12 @@
 local map = vim.keymap.set
 
 --[[
-	Since usually I use a split keyboard, I should remap hjkl to jkl;
-		But why? Just lazyness, index is on j, so it's more natural to
-		use j as left, instead of h, as I should move my hand to the left
-		by one key
+  Since usually I use a split keyboard, I should remap hjkl to jkl;
+    But why? Just lazyness, index is on j, so it's more natural to
+    use j as left, instead of h, as I should move my hand to the left
+    by one key
 
-	I think this is the best explanation of lazyness...
+  I think this is the best explanation of lazyness...
 ]]
 -- map({ "n", "v", "x", "s" }, ";", "l", { noremap = true })
 -- map({ "n", "v", "x", "s" }, "l", "k", { noremap = true })
@@ -41,9 +41,9 @@ map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", {
 
 --[[ Basic commands and schedules ]]
 map({ "i", "n", "s" }, "<esc>", function()
-	vim.cmd("noh")
+  vim.cmd("noh")
 
-	return "<esc>"
+  return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
 
 --[[ Gitsigns keymaps ]]
@@ -51,6 +51,7 @@ map("n", "[h", "<cmd>Gitsigns nav_hunk prev<cr>", { desc = "Navigate to prev hun
 map("n", "]h", "<cmd>Gitsigns nav_hunk next<cr>", { desc = "Navigate to next hunk" })
 map("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage hunk under cursor" })
 map("n", "<leader>sb", "<cmd>Gitsigns stage_buffer<cr>", { desc = "Stage current buffer" })
+map("n", "<leader>lg", function() Snacks.lazygit() end, { desc = "Open lazygit" })
 
 --[[ Snacks keymaps ]]
 map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Fuzzy search files" })
@@ -58,7 +59,12 @@ map("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Fuzzy sear
 map("n", "<leader>fG", function() Snacks.picker.grep_buffers() end, { desc = "Fuzzy search in opened buffers" })
 map("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Fuzzy search help" })
 map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Show open buffers" })
+map("n", "<leader>fk", function() Snacks.picker.keymaps() end, { desc = "Show mapped keys" })
+map("n", "<leader>e", function() Snacks.picker.explorer() end, { desc = "Open explorer" })
 
 --[[ Buffer ]]
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+
+--[[ Neorg ]]
+map("n", "<leader>toc", "<cmd>Neorg toc<cr>", { desc = "Create neorg toc" })
