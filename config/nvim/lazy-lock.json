@@ -9,5 +9,7 @@
   "nvim-cmp": { "branch": "main", "commit": "8c82d0bd31299dbff7f8e780f5e06d2283de9678" },
   "nvim-treesitter": { "branch": "master", "commit": "cfc6f2c117aaaa82f19bcce44deec2c194d900ab" },
   "nvim-web-devicons": { "branch": "master", "commit": "5b9067899ee6a2538891573500e8fd6ff008440f" },
-  "snacks.nvim": { "branch": "main", "commit": "5eac729fa290248acfe10916d92a5ed5e5c0f9ed" }
+  "orgmode": { "branch": "master", "commit": "a5b7206dd71837a6dbd445963930c00f95b7f3b3" },
+  "snacks.nvim": { "branch": "main", "commit": "5eac729fa290248acfe10916d92a5ed5e5c0f9ed" },
+  "targets.vim": { "branch": "master", "commit": "4a5e9c09ec2ba63c8cd16b433453e41c22efab22" }
 }

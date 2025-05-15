@@ -9,6 +9,8 @@ return {
 	color_scheme = "Catppuccin Mocha",
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
+	initial_cols = 150,
+	initial_rows = 35,
 	window_padding = {
 		left = 0,
 		right = 0,

@@ -21,9 +21,12 @@ recentf
 # eshell files
 eshell/history
 eshell/lastdir
+eshell/
 
 # elpa packages
 elpa/
+elpaca/
+backups/
 
 # reftex files
 *.rel

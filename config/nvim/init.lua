@@ -23,7 +23,7 @@ vim.opt.splitbelow = true
 
 vim.opt.lazyredraw = true
 vim.opt.signcolumn = "yes"
-vim.opt.inccommand = "split"
+vim.opt.inccommand = "nosplit"
 vim.opt.cursorline = true
 vim.opt.shortmess:append("fsWcI")
 vim.opt.scrolloff = 10
