@@ -72,13 +72,20 @@
     (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
     (setq byte-compile-warnings '(not free-vars unresolved noruntime lexical make-local))
     (setq native-comp-async-report-warnings-errors nil)
-    (setq load-prefer-newer t)
+    (setq load-prefer-newer t))
 
-    (add-to-list 'default-frame-alist '(width . 200))
-    (add-to-list 'default-frame-alist '(height . 80)))
+    ;;(add-to-list 'default-frame-alist '(width . 200))
+    ;;(add-to-list 'default-frame-alist '(height . 80)))
 
 (with-eval-after-load 'org
-  (setq org-startup-indented t)
+  (setq org-startup-indented t
+	org-edit-tab-acts-natively t
+	org-edit-src-content-indentation 0
+	org-startup-folded 'show3levels
+	org-fontify-done-headline t
+	org-fontify-todo-headline t
+	org-fontify-quote-and-verse-blocks t
+	org-directory "~/Org")
   (add-hook 'org-mode-hook #'visual-line-mode))
 
 (use-package evil-org
@@ -96,6 +103,43 @@
   :after org
   :hook (org-mode . toc-org-mode))
 
+(use-package general
+  :demand (:wait t)
+  :config
+  (general-evil-setup) ;; integrate general with evil
+
+  ;; create a definer for leader key
+  (general-create-definer tz/leader
+    :states '(normal insert visual emacs)
+    :keymaps 'override
+    :prefix "SPC" ;; set space as prefix
+    :global-prefix "M-SPC")
+
+  ;; create combo SPC SPC to trigger M-x, also known as : in evil
+  (tz/leader
+    "SPC" '(execute-extended-command :wk "Execute command"))
+
+  ;; placeholder for namespace SPC h as help base
+  (tz/leader
+    "h" '(:ignore t :wk "Help"))
+
+  ;; placeholder for fuzzy (mainly fzf)
+  (tz/leader
+    "f" '(:ignore t :wk "Fuzzy"))
+
+;; define some commands for org mode
+  (tz/leader
+    "o" '(:ignore t :wk "Org")
+    "oc" '(org-babel-demarcate-block :wk "Create source block")
+    "oe" '(org-babel-execute-src-block :wk "Execute source block")))
+
+(use-package which-key
+  :after evil
+  :demand t
+  :init (which-key-mode)
+  :config
+  (which-key-setup-side-window-right))
+
 (use-package catppuccin-theme
   :demand t
   :config
@@ -112,11 +156,16 @@
   (set-face-attribute 'default nil
 		      :family font-name
 		      :height font-size
-		      :weight 'normal)
+		      :weight 'light)
   (set-face-attribute 'fixed-pitch nil
 		      :family font-name
 		      :height font-size
-		      :weight 'normal))
+		      :weight 'light))
+
+(use-package doom-modeline
+  :init (doom-modeline-mode 1))
+
+(use-package nerd-icons)
 
 (use-package evil
   :init      ;; tweak evil's configuration before loading it

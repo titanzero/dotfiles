@@ -29,12 +29,16 @@
 (defvar tz/os-windows-p (eq system-type 'windows-nt))
 (defvar tz/os-macos-p (eq system-type 'darwin))
 
+(defvar tz/os-home (if tz/os-windows-p
+		       user-emacs-directory
+		     "~/.dotfiles/config/emacs"))
+
 (defun tz/tangle-dotfiles ()
   "If the current file is this file, the code blocks are tangled"
   (interactive)
   (when (equal (buffer-file-name)
-	       (expand-file-name "README.org" user-emacs-directory))
-    (org-babel-tangle '() (expand-file-name "init.el" user-emacs-directory))))
+	       (expand-file-name "README.org" tz/os-home))
+    (org-babel-tangle '() (expand-file-name "init.el" tz/os-home))))
 (add-hook 'after-save-hook #'tz/tangle-dotfiles)
 
 ;; Some early config
@@ -90,3 +94,5 @@
 (global-display-line-numbers-mode)
 (set-default 'display-line-numbers-type 't)
 (set-default 'display-line-numbers-current-absolute 't)
+
+(add-to-list 'default-frame-alist '(fullscreen . maximized))

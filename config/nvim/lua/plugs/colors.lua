@@ -18,6 +18,7 @@ return {
         enabled = true,
         indent_scope_color = "lavender",
       },
+      which_key = true,
     },
   },
   config = function(_, opts)

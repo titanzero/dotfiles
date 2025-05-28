@@ -61,3 +61,4 @@ compiled.lua
 .luarc.json
 
 *.bak/
+config/emacs/tree-sitter
