@@ -68,3 +68,6 @@ map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 --[[ Neorg ]]
 map("n", "<leader>toc", "<cmd>Neorg toc<cr>", { desc = "Create neorg toc" })
+
+--[[ Zenmode ]]
+map("n", "<leader>zz", "<cmd>ZenMode<cr>", { desc = "Toggle ZenMode" })

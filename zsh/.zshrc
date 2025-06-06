@@ -10,6 +10,7 @@ export LANG=en_US.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/cross/bin:$PATH"
 
 #~~ Load OMZ & Antigen
 source $ZSH/oh-my-zsh.sh

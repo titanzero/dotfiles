@@ -20,6 +20,7 @@ vim.g.maplocalleader = " "
 --[[ UI tweaks and settings ]]
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+--vim.opt.winborder = "rounded"
 
 vim.opt.lazyredraw = true
 vim.opt.signcolumn = "yes"
@@ -66,6 +67,7 @@ end)
 --[[ Require some utils and keymaps ]]
 require("zero")
 require("keys")
+require("cmd")
 
 --[[ Install lazy package manager ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -131,3 +133,23 @@ require("lazy").setup({
     },
   },
 })
+
+--[[ Lsp Configs ]]
+local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
+for name, icon in pairs(symbols) do
+	local hl = "DiagnosticSign" .. name
+	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+end
+
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+  },
+  severity_sort = true,
+  signs = true,
+  update_in_insert = true,
+})
+
+--[[ Enable lsps ]]
+vim.lsp.enable("luals")
+

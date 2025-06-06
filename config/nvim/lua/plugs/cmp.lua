@@ -4,6 +4,7 @@ return {
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lsp",
   },
   lazy = true,
   event = "InsertEnter",
@@ -26,6 +27,7 @@ return {
         completeopt = "menu,menuone,noinsert,noselect",
       },
       sources = {
+        { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
       },

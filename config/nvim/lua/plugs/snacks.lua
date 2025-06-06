@@ -30,7 +30,7 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "chafa ~/.dotfiles/config/nvim/rc/the_one.png --format symbols --symbols vhalf -s 40x40; sleep .1",
+          cmd = "chafa ~/.dotfiles/config/nvim/rc/the_one.png --format symbols --symbols vhalf -s 40x40",
           height = 20,
         },
         {

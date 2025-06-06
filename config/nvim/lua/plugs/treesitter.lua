@@ -20,11 +20,6 @@ return {
       ensure_installed = {
         "c",
         "lua",
-        "markdown",
-        "markdown_inline",
-        "query",
-        "vim",
-        "vimdoc",
         "regex",
       },
     })
