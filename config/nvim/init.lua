@@ -137,8 +137,8 @@ require("lazy").setup({
 --[[ Lsp Configs ]]
 local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
 for name, icon in pairs(symbols) do
-	local hl = "DiagnosticSign" .. name
-	vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+  local hl = "DiagnosticSign" .. name
+  vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
 vim.diagnostic.config({
@@ -151,5 +151,4 @@ vim.diagnostic.config({
 })
 
 --[[ Enable lsps ]]
-vim.lsp.enable("luals")
-
+vim.lsp.enable({ "luals", "ccls" })

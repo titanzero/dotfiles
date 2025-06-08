@@ -24,16 +24,16 @@ return {
           { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
+        header = [[
+╔╦╗┬ ┬┌─┐  ╔═╗┌┐┌┌─┐
+ ║ ├─┤├┤   ║ ║│││├┤
+ ╩ ┴ ┴└─┘  ╚═╝┘└┘└─┘
+        ]],
       },
       sections = {
         {
-          section = "terminal",
-          cmd = "chafa ~/.dotfiles/config/nvim/rc/the_one.png --format symbols --symbols vhalf -s 40x40",
-          height = 20,
-        },
-        {
-          pane = 2,
-          { section = "keys", gap = 1, padding = 1 },
+          { section = "header" },
+          { section = "keys",   gap = 1, padding = 1 },
           { section = "startup" },
         }
       }
