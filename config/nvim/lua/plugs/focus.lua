@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "folke/zen-mode.nvim",
   opts = {
@@ -23,6 +24,7 @@ return {
     on_close = function()
       require("lualine").hide({
         unhide = true,
+        place = { "tabline", "winbar", "statusline" }
       })
     end,
   },

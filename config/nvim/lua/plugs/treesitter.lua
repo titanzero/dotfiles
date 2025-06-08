@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "nvim-treesitter/nvim-treesitter",
   event = {
@@ -9,6 +10,7 @@ return {
     require("nvim-treesitter.install").update({ with_sync = true })()
   end,
   config = function()
+    ---@diagnostic disable-next-line: missing-fields
     require("nvim-treesitter.configs").setup({
       highlight = {
         enable = true,

@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -11,9 +12,6 @@ return {
     statuscolumn = { enabled = false },
     words = { enabled = false },
     ---@class snacks.dashboard.Config
-    ---@field enabled? boolean
-    ---@field sections snacks.dashboard.Section
-    ---@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>
     dashboard = {
       preset = {
         keys = {
@@ -50,25 +48,15 @@ return {
       enabled = true,
     },
     ---@class snacks.indent.Config
-    ---@field enabled? boolean
     indent = {
       enabled = true,
     },
     ---@class snacks.image.Config
-    ---@field enabled? boolean enable image viewer
-    ---@field wo? vim.wo|{} options for windows showing the image
-    ---@field bo? vim.bo|{} options for the image buffer
-    ---@field formats? string[]
-    --- Resolves a reference to an image with src in a file (currently markdown only).
-    --- Return the absolute path or url to the image.
-    --- When `nil`, the path is resolved relative to the file.
     ---@field resolve? fun(file: string, src: string): string?
-    ---@field convert? snacks.image.convert.Config
     image = {
       enabled = true,
     },
     ---@class snacks.notifier.Config
-    ---@field enabled? boolean
     ---@field keep? fun(notif: snacks.notifier.Notif): boolean # global keep function
     ---@field filter? fun(notif: snacks.notifier.Notif): boolean # filter our unwanted notifications (return false to hide)
     notifier = {

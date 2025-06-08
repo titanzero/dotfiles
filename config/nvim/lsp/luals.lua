@@ -14,6 +14,22 @@ return {
       telemetry = {
         enable = false,
       },
+      runtime = {
+        version = "LuaJIT",
+        path = {
+          "lua/?.lua",
+          "lua/?/init.lua"
+        },
+      },
+      diagnostics = {
+        globals = {
+          "vim",
+        },
+      },
+      workspace = {
+        checkthirdParty = false,
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
     },
   },
 }
