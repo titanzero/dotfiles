@@ -1,109 +1,109 @@
 ---@type LazyPluginSpec
 return {
-  "hrsh7th/nvim-cmp",
-  -- enabled = false,
+  "saghen/blink.cmp",
+  event = "BufReadPre",
   dependencies = {
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-nvim-lsp",
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-  },
-  lazy = true,
-  event = "InsertEnter",
-  opts = function()
-    local cmp = require("cmp")
-    local luasnip = require("luasnip")
-    local has_words_before = function()
-      unpack = unpack or table.unpack
-      local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-      return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-    end
-
-
-    ---@type cmp.ConfigSchema
-    return {
-      window = {
-        completion = {
-          border = "rounded",
-          scrollbar = true,
-        },
-        documentation = {
-          border = "rounded",
-          scrollbar = "║",
+    "rafamadriz/friendly-snippets",
+    "xzbdmw/colorful-menu.nvim",
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*",
+      opts = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          "lazy.nvim",
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         },
       },
-      completion = {
-        completeopt = "menu,menuone,noinsert,noselect",
-      },
-      sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
-      },
-      ---@diagnostic disable-next-line: missing-fields
-      formatting = {
-        fields = { "kind", "abbr", "menu" },
-        format = function(entry, item)
-          local menu_icon = {
-            nvim_lsp = "λ",
-            luasnip = "⋗",
-            buffer = "Ω",
-            path = "/",
-          }
-
-
-          item.menu = menu_icon[entry.source.name]
-          return item
-        end,
-      },
-      mapping = {
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), { "i" }),
-        ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), { "i" }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          -- If it's a snippet then jump between fields
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-            -- otherwise if the completion pop is visible then complete
-          elseif cmp.visible() then
-            cmp.confirm({ select = false })
-            -- if the popup is not visible then open the popup
-          elseif has_words_before() then
-            cmp.complete()
-            -- otherwise fallback
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<CR>"] = cmp.mapping({
-          i = function(fallback)
-            if cmp.visible() then
-              if luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-              else
-                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-              end
-            else
-              fallback()
-            end
-          end,
-        }),
-        ["<Esc>"] = cmp.mapping(function(fallback)
-          luasnip.unlink_current()
-          fallback()
-        end),
-      },
+    },
+    {
+      "fang2hou/blink-copilot",
+      config = true,
     }
-  end,
+  },
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  opts = {
+    keymap = {
+      preset = "enter",
+    },
+    snippets = {
+      preset = "luasnip",
+    },
+    signature = {
+      enabled = true,
+      window = {
+        border = vim.g.__BORDERS,
+        treesitter_highlighting = true,
+        show_documentation = true,
+      },
+    },
+    appearance = {
+      highlight_ns = vim.api.nvim_create_namespace("blink_cmp"),
+      use_nvim_cmp_as_default = false,
+      nerd_font_variant = "mono",
+    },
+    sources = {
+      default = { "lazydev", "lsp", "copilot", "path", "snippets", "buffer" },
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 50,
+          async = true,
+        },
+      },
+    },
+    fuzzy = {
+      implementation = "prefer_rust_with_warning",
+    },
+    completion = {
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200,
+        window = {
+          border = vim.g.__BORDERS
+        },
+      },
+      list = {
+        selection = {
+          preselect = true,
+          auto_insert = false,
+        },
+      },
+      menu = {
+        border = vim.g.__BORDERS,
+        draw = {
+          -- We don't need label_description now because label and label_description are already
+          -- combined together in label by colorful-menu.nvim.
+          columns = { { "kind_icon" }, { "label", gap = 1 } },
+          components = {
+            label = {
+              text = function(ctx)
+                return require("colorful-menu").blink_components_text(ctx)
+              end,
+              highlight = function(ctx)
+                return require("colorful-menu").blink_components_highlight(ctx)
+              end,
+            },
+          },
+        }
+      },
+      ghost_text = {
+        enabled = true,
+      },
+    },
+  },
 }

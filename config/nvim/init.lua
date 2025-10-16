@@ -10,12 +10,9 @@
  world, be ready to fall into this rabbit hole...
 --]]
 
---[[ Enable some experimental features ]]
---vim.loader.enable()
-
---[[ Map leader and local leader ]]
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+--[[ Setting some sane defaults ]]
+vim.g.mapleader = " ";
+vim.g.maplocalleader = " ";
 
 --[[ UI tweaks and settings ]]
 vim.opt.splitright = true
@@ -64,10 +61,9 @@ vim.schedule(function()
   vim.opt.clipboard = "unnamedplus"
 end)
 
---[[ Require some utils and keymaps ]]
-require("zero")
-require("keys")
-require("cmd")
+---@type string
+---Definition of global borders type for win-open
+vim.g.__BORDERS = "rounded"
 
 --[[ Install lazy package manager ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -86,11 +82,8 @@ require("lazy").setup({
     lazy = false,
     version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  rocks = {
-    -- enabled = false,
-  },
   ui = {
-    border = "rounded",
+    border = vim.g.__BORDERS,
     size = {
       width = 0.6,
       height = 0.5,
@@ -134,21 +127,5 @@ require("lazy").setup({
   },
 })
 
---[[ Lsp Configs ]]
-local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
-for name, icon in pairs(symbols) do
-  local hl = "DiagnosticSign" .. name
-  vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-end
-
-vim.diagnostic.config({
-  float = {
-    border = "rounded",
-  },
-  severity_sort = true,
-  signs = true,
-  update_in_insert = true,
-})
-
---[[ Enable lsps ]]
-vim.lsp.enable({ "luals", "ccls" })
+require("autocmds")
+require("keys")

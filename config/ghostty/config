@@ -6,7 +6,6 @@ window-padding-x = 0
 window-padding-y = 0
 window-height = 30
 window-width = 160
-theme = catppuccin-mocha
 background = #1e1e2e
 foreground = #cdd6f4
 selection-background = #585b70

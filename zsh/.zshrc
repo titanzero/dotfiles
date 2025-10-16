@@ -39,3 +39,12 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/nicola/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+export PATH="/Users/nicola/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/Users/nicola/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
