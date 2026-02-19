@@ -1,0 +1,19 @@
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+.DS_Store
+auto-save-list/
+eln-cache/
+backups/
+tramp
+/recentf
+/history
+/transient/
+/elpa/
+/custom.el
+/projectile.cache
+/straight/
+.cache/

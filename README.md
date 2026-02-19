@@ -8,7 +8,7 @@
 |---------------------|---------------------|--------------------------------------|------|
 | `zsh/`              | `$HOME`             | `.zshrc`, `.zshenv`, `.p10k.zsh`     | [→](zsh/README.md) |
 | `git/`              | `$HOME`             | `.gitconfig`                         | [→](git/README.md) |
-| `config/emacs/`     | `~/.emacs.d`        | `early-init.el`, `init.el`, `lisp/`  | [→](config/emacs/README.md) |
+| `config/emacs/`     | `~/.config/emacs`   | `early-init.el`, `init.el`, `lisp/`  | [→](config/emacs/README.md) |
 | `config/wezterm/`   | `~/.config/wezterm` | `wezterm.lua`                        | [→](config/wezterm/README.md) |
 
 > `README.md` and `.gitkeep` files are ignored by stow (see `.stowrc`).
@@ -18,14 +18,12 @@
 ```bash
 # Clone and stow from repo root
 stow -t ~ zsh git
-stow -t ~/.emacs.d config/emacs
-stow -t ~/.config/wezterm config/wezterm
+stow config -t ~/.config
 ```
 
 To remove symlinks:
 
 ```bash
 stow -t ~ -D zsh git
-stow -t ~/.emacs.d -D config/emacs
-stow -t ~/.config/wezterm -D config/wezterm
+stow config -t ~/.config -D
 ```

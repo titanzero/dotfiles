@@ -18,5 +18,6 @@
 ## Stow
 
 ```bash
-stow -t ~/.config/wezterm config/wezterm
+# From the repository root
+stow config -t ~/.config
 ```
