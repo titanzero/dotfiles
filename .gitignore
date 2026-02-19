@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+*~
+*.swp
+*.swo
+.idea/
+
+# Local overrides (e.g. machine-specific)
+*.local
+.local/
+
+# Emacs: ignore everything under .emacs.d except the literate config
+emacs/.emacs.d/*
+!emacs/.emacs.d/emacs.org

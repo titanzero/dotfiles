@@ -1,0 +1,3 @@
+--ignore=README\.md
+--ignore=^\.gitkeep$
+--ignore=^\.DS_Store$
