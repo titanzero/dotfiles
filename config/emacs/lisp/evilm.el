@@ -1,12 +1,12 @@
 ;;; evilm.el -*- lexical-binding: t -*-
 ;;; Commentary:
-;; Evil mode configuration with SPC leader key system
-;; Optimized for split keyboard (home row: j/k/l/;)
+;; Evil mode configuration with SPC leader key system.
+;; Optimized for split keyboard (home row: j/k/l/;).
 
 ;;; Code:
 
 ;; ============================================================================
-;; WHICH-KEY — Show available keybindings in popup
+;; WHICH-KEY — Keybinding popup hints
 ;; ============================================================================
 (use-package which-key
   :diminish
@@ -27,37 +27,32 @@
   (setq evil-want-integration t
         evil-want-keybinding nil
         evil-want-C-u-scroll t
-        evil-want-Y-yank-to-eol t     ; Y yanks to end of line (like D, C)
-        evil-undo-system 'undo-redo    ; Native undo/redo (Emacs 28+)
-        evil-split-window-below t      ; New splits open below
-        evil-vsplit-window-right t     ; New vsplits open right
+        evil-want-Y-yank-to-eol t
+        evil-undo-system 'undo-redo
+        evil-split-window-below t
+        evil-vsplit-window-right t
         evil-respect-visual-line-mode t)
   :config
   (evil-mode 1)
 
-  ;; --- Insert mode: jk to escape (j=left hand, k=right hand on split) ---
+  ;; Insert mode: jk to escape (split-keyboard chord)
   (evil-define-key 'insert global-map
     (kbd "j") (lambda ()
                 (interactive)
                 (let ((evt (read-event nil nil 0.15)))
                   (cond
-                   ((and evt (= evt ?k))
-                    (evil-normal-state))
-                   (evt
-                    (insert "j")
-                    (push evt unread-command-events))
-                   (t
-                    (insert "j"))))))
+                   ((and evt (= evt ?k)) (evil-normal-state))
+                   (evt (insert "j") (push evt unread-command-events))
+                   (t   (insert "j"))))))
 
-  ;; --- Split-keyboard home row: j/k/l/; as left/down/up/right ---
-  ;; Remap motion keys in normal, visual, and operator states
+  ;; Split-keyboard home row: j=left  k=down  l=up  ;=right
   (evil-define-key '(normal visual motion operator) 'global
-    (kbd "j") 'evil-backward-char     ; j → left  (was h)
-    (kbd "k") 'evil-next-line         ; k → down  (was j)
-    (kbd "l") 'evil-previous-line     ; l → up    (was k)
-    (kbd ";") 'evil-forward-char)     ; ; → right (was l)
+    (kbd "j") 'evil-backward-char
+    (kbd "k") 'evil-next-line
+    (kbd "l") 'evil-previous-line
+    (kbd ";") 'evil-forward-char)
 
-  ;; --- Window navigation with C-j/k/l/; (matches your home row) ---
+  ;; Window navigation C-j/k/l/;
   (evil-define-key '(normal visual insert emacs) 'global
     (kbd "C-j") 'evil-window-left
     (kbd "C-k") 'evil-window-down
@@ -65,7 +60,7 @@
     (kbd "C-;") 'evil-window-right))
 
 ;; ============================================================================
-;; EVIL-COLLECTION — Community Evil bindings for many modes
+;; EVIL-COLLECTION — Community Evil bindings
 ;; ============================================================================
 (use-package evil-collection
   :after evil
@@ -79,91 +74,91 @@
   :after evil
   :config
 
-  ;; Define SPC as leader in normal/visual, available everywhere
   (general-create-definer tz/leader-def
     :states '(normal visual)
     :keymaps 'override
     :prefix "SPC")
 
-  ;; Define , as local leader (mode-specific bindings)
   (general-create-definer tz/local-leader-def
     :states '(normal visual)
     :keymaps 'override
     :prefix ",")
 
   ;; =========================================================================
-  ;; TOP-LEVEL SHORTCUTS (most used actions, single key after SPC)
+  ;; TOP-LEVEL (SPC <key>)
   ;; =========================================================================
   (tz/leader-def
     "SPC" '(execute-extended-command :wk "M-x")
-    "."   '(find-file :wk "find file")
-    ","   '(switch-to-buffer :wk "switch buffer")
-    "/"   '(grep :wk "search project")
-    ":"   '(eval-expression :wk "eval expression"))
+    "."   '(find-file               :wk "find file")
+    ","   '(consult-buffer          :wk "switch buffer")
+    "/"   '(consult-ripgrep         :wk "search project")
+    ":"   '(eval-expression         :wk "eval expression"))
 
   ;; =========================================================================
   ;; BUFFER — SPC b
   ;; =========================================================================
   (tz/leader-def
     "b"  '(:ignore t :wk "buffer")
-    "bb" '(switch-to-buffer :wk "switch")
+    "bb" '(consult-buffer      :wk "switch")
     "bd" '(kill-current-buffer :wk "kill")
-    "bn" '(next-buffer :wk "next")
-    "bp" '(previous-buffer :wk "previous")
-    "bs" '(save-buffer :wk "save")
-    "bS" '(evil-write-all :wk "save all")
-    "br" '(revert-buffer :wk "revert")
-    "bi" '(ibuffer :wk "ibuffer"))
+    "bn" '(next-buffer         :wk "next")
+    "bp" '(previous-buffer     :wk "previous")
+    "bs" '(save-buffer         :wk "save")
+    "bS" '(evil-write-all      :wk "save all")
+    "br" '(revert-buffer       :wk "revert")
+    "bi" '(ibuffer             :wk "ibuffer"))
 
   ;; =========================================================================
   ;; FILE — SPC f
   ;; =========================================================================
   (tz/leader-def
     "f"  '(:ignore t :wk "file")
-    "ff" '(find-file :wk "find")
-    "fr" '(recentf-open-files :wk "recent")
-    "fs" '(save-buffer :wk "save")
-    "fR" '(tz/reload-config :wk "reload config")
-    "fD" '(delete-file :wk "delete")
-    "fy" '(tz/copy-file-path :wk "copy path"))
+    "ff" '(find-file           :wk "find")
+    "fr" '(consult-recent-file :wk "recent")
+    "fs" '(save-buffer         :wk "save")
+    "fR" '(tz/reload-config    :wk "reload config")
+    "fD" '(delete-file         :wk "delete")
+    "fy" '(tz/copy-file-path   :wk "copy path"))
 
   ;; =========================================================================
-  ;; WINDOW — SPC w (uses j/k/l/; for directions)
+  ;; WINDOW — SPC w  (j=left k=down l=up ;=right)
   ;; =========================================================================
   (tz/leader-def
     "w"  '(:ignore t :wk "window")
-    "wj" '(evil-window-left :wk "← left")
-    "wk" '(evil-window-down :wk "↓ down")
-    "wl" '(evil-window-up :wk "↑ up")
-    "w;" '(evil-window-right :wk "→ right")
-    "ws" '(evil-window-split :wk "split horizontal")
-    "wv" '(evil-window-vsplit :wk "split vertical")
-    "wd" '(evil-window-delete :wk "delete")
+    "wj" '(evil-window-left    :wk "← left")
+    "wk" '(evil-window-down    :wk "↓ down")
+    "wl" '(evil-window-up      :wk "↑ up")
+    "w;" '(evil-window-right   :wk "→ right")
+    "ws" '(evil-window-split   :wk "split h")
+    "wv" '(evil-window-vsplit  :wk "split v")
+    "wd" '(evil-window-delete  :wk "delete")
     "wm" '(delete-other-windows :wk "maximize")
-    "w=" '(balance-windows :wk "balance"))
+    "w=" '(balance-windows     :wk "balance"))
 
   ;; =========================================================================
   ;; TREEMACS / TOGGLE — SPC t
   ;; =========================================================================
   (tz/leader-def
     "t"  '(:ignore t :wk "tree/toggle")
-    "tt" '(treemacs :wk "treemacs")
-    "tf" '(treemacs-find-file :wk "find in tree")
-    "td" '(treemacs-select-directory :wk "select directory")
+    "tt" '(treemacs              :wk "treemacs")
+    "tf" '(treemacs-find-file    :wk "find in tree")
+    "td" '(treemacs-select-directory :wk "select dir")
     "tn" '(display-line-numbers-mode :wk "line numbers")
-    "tw" '(whitespace-mode :wk "whitespace")
-    "tl" '(hl-line-mode :wk "highlight line")
-    "tv" '(visual-line-mode :wk "visual lines"))
+    "tw" '(whitespace-mode       :wk "whitespace")
+    "tl" '(hl-line-mode          :wk "highlight line")
+    "tv" '(visual-line-mode      :wk "visual lines"))
 
   ;; =========================================================================
   ;; SEARCH — SPC s
   ;; =========================================================================
   (tz/leader-def
     "s"  '(:ignore t :wk "search")
-    "ss" '(isearch-forward :wk "search forward")
-    "sr" '(isearch-backward :wk "search backward")
-    "sp" '(grep :wk "grep project")
-    "sR" '(query-replace :wk "replace"))
+    "ss" '(consult-line       :wk "linee nel buffer")
+    "sS" '(consult-line-multi :wk "linee ovunque")
+    "sp" '(consult-ripgrep    :wk "ripgrep progetto")
+    "so" '(consult-outline    :wk "intestazioni org")
+    "sr" '(isearch-backward   :wk "isearch indietro")
+    "sR" '(query-replace      :wk "replace"))
 
   ;; =========================================================================
   ;; LANGUAGE / SPELL — SPC l
@@ -172,9 +167,35 @@
     "l"  '(:ignore t :wk "language")
     "li" '(tz/set-italian-dictionary :wk "italiano")
     "le" '(tz/set-english-dictionary :wk "english")
-    "ls" '(flyspell-mode :wk "flyspell toggle")
-    "lc" '(ispell-word :wk "correct word")
-    "ln" '(flyspell-goto-next-error :wk "next error"))
+    "ls" '(flyspell-mode             :wk "flyspell toggle")
+    "lb" '(flyspell-buffer           :wk "check buffer")
+    "lc" '(ispell-word               :wk "correct word")
+    "ln" '(flyspell-goto-next-error  :wk "next error"))
+
+  ;; =========================================================================
+  ;; OPEN — SPC o
+  ;; =========================================================================
+  (tz/leader-def
+    "o"  '(:ignore t :wk "open")
+    "ot" '(eshell              :wk "terminal")
+    "od" '((lambda () (interactive) (dired default-directory)) :wk "dired here")
+    "ow" '(tz/workspace-picker :wk "workspace")
+    "oW" '((lambda () (interactive) (dired tz/writing-root)) :wk "writing root"))
+
+  ;; =========================================================================
+  ;; WRITING / ZEN — SPC z
+  ;; =========================================================================
+  (tz/leader-def
+    "z"  '(:ignore t :wk "writing")
+    "zz" '(tz/writing-mode           :wk "writing mode")
+    "zZ" '(tz/zen-mode               :wk "zen mode")
+    "zo" '(olivetti-mode             :wk "olivetti")
+    "zi" '(tz/set-italian-dictionary :wk "italiano")
+    "ze" '(tz/set-english-dictionary :wk "english")
+    "zc" '(ispell-word               :wk "correct word")
+    "zn" '(flyspell-goto-next-error  :wk "next error")
+    "zs" '(flyspell-mode             :wk "flyspell toggle")
+    "zb" '(flyspell-buffer           :wk "check buffer"))
 
   ;; =========================================================================
   ;; HELP — SPC h
@@ -183,10 +204,10 @@
     "h"  '(:ignore t :wk "help")
     "hf" '(describe-function :wk "function")
     "hv" '(describe-variable :wk "variable")
-    "hk" '(describe-key :wk "key")
-    "hm" '(describe-mode :wk "mode")
-    "hi" '(info :wk "info")
-    "hp" '(describe-package :wk "package"))
+    "hk" '(describe-key      :wk "key")
+    "hm" '(describe-mode     :wk "mode")
+    "hi" '(info              :wk "info")
+    "hp" '(describe-package  :wk "package"))
 
   ;; =========================================================================
   ;; QUIT — SPC q
@@ -194,16 +215,7 @@
   (tz/leader-def
     "q"  '(:ignore t :wk "quit")
     "qq" '(save-buffers-kill-terminal :wk "quit emacs")
-    "qr" '(restart-emacs :wk "restart"))
-
-  ;; =========================================================================
-  ;; OPEN — SPC o
-  ;; =========================================================================
-  (tz/leader-def
-    "o"  '(:ignore t :wk "open")
-    "ot" '(eshell :wk "terminal")
-    "od" '((lambda () (interactive) (dired default-directory)) :wk "dired here")
-    "on" '((lambda () (interactive) (find-file tz/novels-directory)) :wk "novels")))
+    "qr" '(restart-emacs             :wk "restart")))
 
 (provide 'evilm)
 ;;; evilm.el ends here

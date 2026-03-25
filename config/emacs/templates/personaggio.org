@@ -1,0 +1,25 @@
+#+TITLE:
+#+DATE:
+#+CATEGORY: personaggio
+#+FILETAGS: :personaggio:
+
+* Anagrafica
+- *Nome completo:*
+- *Soprannome:*
+- *Età:*
+- *Ruolo narrativo:*
+
+* Aspetto fisico
+
+* Personalità
+
+* Background e storia
+
+* Relazioni
+| Personaggio | Tipo relazione | Note |
+|-------------+----------------+------|
+|             |                |      |
+
+* Arco narrativo
+
+* Note

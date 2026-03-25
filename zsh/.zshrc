@@ -10,6 +10,7 @@ export LANG=en_US.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 
 export PATH="$HOME/.dotnet/tools:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/gccx/bin:$PATH"
 

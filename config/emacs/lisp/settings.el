@@ -66,6 +66,12 @@
 
 ;; Faces
 (set-face-attribute 'default nil :font tz/font-face :height tz/font-size)
+;; Variable-pitch: iA Writer Quattro S for prose (used by mixed-pitch in org buffers)
+(set-face-attribute 'variable-pitch nil :font "iA Writer Quattro S" :height 175)
+
+;; macOS: add Homebrew to exec-path so Emacs finds CLI tools (aspell, etc.)
+(when (eq system-type 'darwin)
+  (add-to-list 'exec-path "/opt/homebrew/bin"))
 
 ;; On windows use directwrite
 (when (eq system-type 'windows-nt)

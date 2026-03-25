@@ -1,0 +1,15 @@
+#+TITLE:
+#+DATE:
+#+CATEGORY: capitolo
+#+FILETAGS: :capitolo:
+
+* Sinossi
+Riassunto breve della scena/capitolo.
+
+* Personaggi presenti
+
+* Luogo
+
+* Testo
+
+* Note di revisione

@@ -1,0 +1,16 @@
+#+TITLE:
+#+DATE:
+
+* Sinossi
+
+* Personaggi
+[[file:personaggi/][→ Cartella personaggi]]
+
+* Luoghi
+[[file:luoghi/][→ Cartella luoghi]]
+
+* Capitoli
+[[file:capitoli/][→ Cartella capitoli]]
+
+* Note
+[[file:note/][→ Cartella note]]

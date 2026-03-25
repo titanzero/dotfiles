@@ -1,0 +1,11 @@
+#+TITLE:
+#+DATE:
+#+CATEGORY: nota
+#+FILETAGS: :nota:
+
+* Contenuto
+
+* Riferimenti
+
+* Todo
+- [ ]

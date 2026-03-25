@@ -48,8 +48,10 @@
 ;;; Load settings
 (require 'functions)
 (require 'settings)
+(require 'completion)
 (require 'evilm)
 (require 'tree)
 (require 'theme)
+(require 'prose)
 
 ;;; Keybindings are managed in evilm.el via Evil SPC leader
