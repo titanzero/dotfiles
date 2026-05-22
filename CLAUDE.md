@@ -12,7 +12,7 @@ Personal dotfiles managed with [GNU Stow](https://www.gnu.org/software/stow/). E
 # Symlink zsh and git configs to $HOME
 stow -t ~ zsh git
 
-# Symlink emacs and wezterm configs to ~/.config
+# Symlink wezterm config to ~/.config
 stow config -t ~/.config
 
 # Remove symlinks
@@ -28,14 +28,11 @@ Stow is configured via `.stowrc` to ignore `README.md`, `.gitkeep`, and `.DS_Sto
 |---|---|---|
 | `zsh/` | `$HOME` | `.zshrc`, `.zshenv`, `.p10k.zsh` |
 | `git/` | `$HOME` | `.gitconfig` |
-| `config/emacs/` | `~/.config/emacs` | `early-init.el`, `init.el`, `lisp/` modules |
 | `config/wezterm/` | `~/.config/wezterm` | `wezterm.lua` |
 
 ## Key Architecture Notes
 
 **Zsh**: Uses Oh My Zsh + antigen for bundle management, Powerlevel10k theme with instant prompt. Custom functions: `dot` (cd to dotfiles), `rr` (cd to repo root), `mkcd`.
-
-**Emacs**: Requires Emacs 29+. Modular structure — `init.el` bootstraps `use-package` then loads modules from `lisp/`: `functions.el`, `settings.el`, `evilm.el` (Evil/Vim bindings), `theme.el` (Catppuccin Mocha), `tree.el` (Treemacs). Evil mode uses a remapped layout for split keyboards: `j`←, `k`↓, `l`↑, `;`→. SPC is the leader key.
 
 **WezTerm**: Lua config with Catppuccin Mocha theme, IoskeleyMono Nerd Font 14pt, tab bar at bottom.
 
