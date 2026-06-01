@@ -8,11 +8,11 @@ fi
 #~~ Some exports
 export LANG=en_US.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
+export HOMEBREW_NO_ENV_HINTS=1
 
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/gccx/bin:$PATH"
 
 #~~ Load OMZ & Antigen
 source $ZSH/oh-my-zsh.sh
@@ -34,9 +34,9 @@ antigen apply
 #~~ Some usefull aliases and functions
 alias mkdir="mkdir -p"
 alias cat="bat"
-alias sonotornatomerde="wakeonlan 88:c9:b3:bf:70:a2"
+alias pw="< /dev/urandom LC_ALL=C tr -dc '[:graph:]' | head -c50; echo"
 
-function dot { cd ~/.dotfiles }
+function dot { cd ~/[wW]ork/dotfiles }
 function rr { cd ~/[wW]ork/$@ }
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
