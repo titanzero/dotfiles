@@ -1,5 +1,5 @@
-vim.lsp.enable({
-    "lua_ls",
+vim.lsp.config("*", {
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
 })
 
 vim.diagnostic.config({
@@ -21,4 +21,8 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.HINT]  = "H",
         },
     },
+})
+
+vim.lsp.enable({
+    "lua_ls",
 })
