@@ -4,6 +4,8 @@ vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
 
 -- Deferred: fzf-lua is not needed on first draw
 vim.schedule(function()
+  require("nvim-web-devicons").setup()
+
   vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" })
 
   local fzf     = require("fzf-lua")
@@ -15,17 +17,17 @@ vim.schedule(function()
     file_icon_padding = " ",
 
     winopts = {
-      height   = 0.85,
-      width    = 0.88,
-      row      = 0.35,
-      col      = 0.50,
-      border   = "rounded",
-      backdrop = 70,
+      height     = 0.85,
+      width      = 0.88,
+      row        = 0.35,
+      col        = 0.50,
+      border     = "rounded",
+      backdrop   = 70,
       treesitter = {
         enabled    = true,
         fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" },
       },
-      preview = {
+      preview    = {
         border       = "rounded",
         wrap         = false,
         hidden       = false,
@@ -37,7 +39,7 @@ vim.schedule(function()
         title_pos    = "center",
         scrollbar    = "float",
         delay        = 20,
-        winopts = {
+        winopts      = {
           number         = true,
           relativenumber = false,
           cursorline     = true,
@@ -45,10 +47,10 @@ vim.schedule(function()
           foldenable     = false,
         },
       },
-      on_create = function()
+      on_create  = function()
         -- Remap for jkl; navigation layout
         vim.keymap.set("t", "<C-j>", "<Down>", { silent = true, buffer = true })
-        vim.keymap.set("t", "<C-k>", "<Up>",   { silent = true, buffer = true })
+        vim.keymap.set("t", "<C-k>", "<Up>", { silent = true, buffer = true })
       end,
     },
 
@@ -111,10 +113,10 @@ vim.schedule(function()
         args = "--color=always --style=numbers,changes",
       },
       builtin = {
-        syntax         = true,
-        syntax_limit_b = 1024 * 1024,
-        limit_b        = 1024 * 1024 * 10,
-        treesitter = {
+        syntax          = true,
+        syntax_limit_b  = 1024 * 1024,
+        limit_b         = 1024 * 1024 * 10,
+        treesitter      = {
           enabled  = true,
           disabled = { "help" },
           context  = { max_lines = 1, trim_scope = "inner" },
@@ -147,7 +149,7 @@ vim.schedule(function()
       glob_flag      = "--iglob",
       glob_separator = "%s%-%-",
       hidden         = false,
-      actions = {
+      actions        = {
         ["ctrl-g"] = { actions.grep_lgrep },
       },
     },
@@ -160,7 +162,7 @@ vim.schedule(function()
       jump1_action       = actions.file_edit,
       -- Exclude current declaration from results to avoid self-reference noise
       includeDeclaration = false,
-      symbols = {
+      symbols            = {
         async_or_timeout = true,
         symbol_style     = 1,
         symbol_hl        = function(s) return "@" .. s:lower() end,
@@ -168,8 +170,8 @@ vim.schedule(function()
         child_prefix     = true,
         fzf_opts         = { ["--tiebreak"] = "begin" },
       },
-      code_actions = { previewer = "codeaction" },
-      finder       = { async = true, silent = true, separator = "| " },
+      code_actions       = { previewer = "codeaction" },
+      finder             = { async = true, silent = true, separator = "| " },
     },
 
     diagnostics = {
@@ -186,7 +188,7 @@ vim.schedule(function()
       show_unloaded = true,
       file_icons    = true,
       color_icons   = true,
-      actions = {
+      actions       = {
         ["ctrl-x"] = { fn = actions.buf_del, reload = true },
       },
     },
@@ -195,10 +197,10 @@ vim.schedule(function()
       status = {
         multiprocess = true,
         previewer    = "git_diff",
-        actions = {
+        actions      = {
           ["right"]  = { fn = actions.git_unstage, reload = true },
-          ["left"]   = { fn = actions.git_stage,   reload = true },
-          ["ctrl-x"] = { fn = actions.git_reset,   reload = true },
+          ["left"]   = { fn = actions.git_stage, reload = true },
+          ["ctrl-x"] = { fn = actions.git_reset, reload = true },
         },
       },
       commits = {
@@ -224,7 +226,7 @@ vim.schedule(function()
     },
 
     helptags = { previewer = "help_native" },
-    manpages = { previewer = "man_native"  },
+    manpages = { previewer = "man_native" },
   })
 
   -- Register as vim.ui.select handler (LSP code actions, rename, etc.)

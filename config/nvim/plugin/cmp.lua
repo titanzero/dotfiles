@@ -29,7 +29,7 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"]     = cmp.mapping.abort(),
     ["<CR>"]      = cmp.mapping.confirm({ select = false }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<Tab>"]     = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.locally_jumpable(1) then
@@ -38,7 +38,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<S-Tab>"]   = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.locally_jumpable(-1) then
@@ -50,9 +50,9 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp", priority = 1000 },
-    { name = "luasnip",  priority = 750  },
-    { name = "buffer",   priority = 500  },
-    { name = "path",     priority = 250  },
+    { name = "luasnip",  priority = 750 },
+    { name = "buffer",   priority = 500 },
+    { name = "path",     priority = 250 },
   }),
   formatting = {
     format = function(entry, item)

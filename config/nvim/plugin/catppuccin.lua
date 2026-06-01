@@ -5,43 +5,43 @@ vim.pack.add({
 })
 
 require("catppuccin").setup({
-  flavour  = "mocha",
-  background = {
+  flavour                = "mocha",
+  background             = {
     light = "latte",
     dark  = "mocha",
   },
 
-  compile_path        = vim.fn.stdpath("cache") .. "/catppuccin",
+  compile_path           = vim.fn.stdpath("cache") .. "/catppuccin",
   transparent_background = false,
-  term_colors         = true,
+  term_colors            = true,
 
-  float = {
+  float                  = {
     transparent = false,
     solid       = false,
   },
 
-  dim_inactive = {
+  dim_inactive           = {
     enabled    = false,
     shade      = "dark",
     percentage = 0.15,
   },
 
-  styles = {
-    comments    = { "italic" },
+  styles                 = {
+    comments     = { "italic" },
     conditionals = { "italic" },
-    keywords    = {},
-    functions   = {},
-    strings     = {},
-    variables   = {},
-    numbers     = {},
-    booleans    = {},
-    properties  = {},
-    types       = {},
-    operators   = {},
-    miscs       = {},
+    keywords     = {},
+    functions    = {},
+    strings      = {},
+    variables    = {},
+    numbers      = {},
+    booleans     = {},
+    properties   = {},
+    types        = {},
+    operators    = {},
+    miscs        = {},
   },
 
-  lsp_styles = {
+  lsp_styles             = {
     virtual_text = {
       errors      = { "italic" },
       hints       = { "italic" },
@@ -49,9 +49,9 @@ require("catppuccin").setup({
       information = { "italic" },
     },
     underlines = {
-      errors   = { "underline" },
-      warnings = { "underline" },
-      hints    = {},
+      errors      = { "underline" },
+      warnings    = { "underline" },
+      hints       = {},
       information = {},
     },
     inlay_hints = {
@@ -59,8 +59,8 @@ require("catppuccin").setup({
     },
   },
 
-  color_overrides = {},
-  highlight_overrides = {},
+  color_overrides        = {},
+  highlight_overrides    = {},
 })
 
 -- v2.0.0: colorscheme renamed to avoid conflict with the new
