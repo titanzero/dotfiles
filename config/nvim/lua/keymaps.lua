@@ -19,6 +19,7 @@ map("n", "<leader>sb", "<cmd>FzfLua grep_curbuf<cr>", "Search buffer")
 
 -- FzfLua LSP
 map("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", "Go to definition")
+map("n", "<leader>o", "<C-t>", "Jump back (tag stack)")
 map("n", "gr", "<cmd>FzfLua lsp_references<cr>", "References")
 map("n", "gi", "<cmd>FzfLua lsp_implementations<cr>", "Implementations")
 map("n", "<leader>ss", "<cmd>FzfLua lsp_document_symbols<cr>", "Document symbols")
